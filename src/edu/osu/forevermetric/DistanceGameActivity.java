@@ -18,10 +18,15 @@ import android.widget.TextView;
 
 
 public class DistanceGameActivity extends Activity implements OnClickListener{
-	
+	int correct;
+	int incorrect;
+	DistanceGame game;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		correct = 0;
+		incorrect = 0;
+		
 		setContentView(R.layout.distance_game);
 		//set question
 		TextView textview = new TextView(this);
