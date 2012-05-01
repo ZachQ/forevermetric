@@ -35,5 +35,16 @@
         android:textSize="20dp" 
         android:gravity="center"
         android:layout_gravity="center"/>
+    
+    <Button
+        android:id="@+id/bAbout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:text="About"
+        android:textSize="20dp" 
+        android:gravity="center"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
