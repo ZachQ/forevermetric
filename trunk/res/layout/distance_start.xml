@@ -4,15 +4,20 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" 
     android:padding="20dp">
-
+    
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:text="I dont remember what this activity should do!" 
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textSize="30dp"/>
+        android:layout_marginTop="10dip"
+        android:text="@string/landMarkLoc"
+    />
+    <Spinner 
+        android:id="@+id/spinnerLandMarkLoc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@+string/selLandMarkLoc"
+    />
+    
     
     <Button
         android:id="@+id/playGameButton"
@@ -21,6 +26,28 @@
         android:padding="10dp"
         android:layout_marginTop="20dp"
         android:text="Play Game!"
+        android:textSize="20dp" 
+        android:gravity="center"
+        android:layout_gravity="center" />
+    
+    <Button
+        android:id="@+id/hsButtondis"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:text="High Score"
+        android:textSize="20dp" 
+        android:gravity="center"
+        android:layout_gravity="center" />
+    
+    <Button
+        android:id="@+id/howToPlayButtondis"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:text="How To Play"
         android:textSize="20dp" 
         android:gravity="center"
         android:layout_gravity="center" />
