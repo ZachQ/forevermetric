@@ -14,7 +14,7 @@ public class DistanceGameObject {
 	}
 	
 	
-	public String getLocationName() {
+	public String getQuestionText() {
 		return question;
 	}
 	
