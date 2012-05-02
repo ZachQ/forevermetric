@@ -17,15 +17,25 @@ public class Menu extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.menu);
 		
+		// Setup for Distance Game Button
 		View distanceButton = (Button) findViewById(R.id.bDistance);
 		distanceButton.setOnClickListener(this);
+		
+		// Setup for Conversion Game Button
+		View conversionButton = (Button) findViewById(R.id.bConversion);
+		conversionButton.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.bDistance:
+			// if the user clicks distance game, start that activity
 			startActivity(new Intent(this, DistanceStartActivity.class));
+			break;
+		case R.id.bConversion:
+			// if the user clicks conversion game, start that activity
+			startActivity(new Intent(this,ConversionStartActivity.class));
 			break;
 		}
 	} 
