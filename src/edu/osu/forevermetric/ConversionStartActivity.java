@@ -19,29 +19,37 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class DistanceStartActivity extends Activity  implements OnClickListener{
+public class ConversionStartActivity extends Activity  implements OnClickListener{
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.distance_start);
+		setContentView(R.layout.conversion_start);
 		View playButton = (Button) findViewById(R.id.playGameButton);
 		playButton.setOnClickListener(this);
 		
-		Spinner spinner = (Spinner) findViewById(R.id.spinnerLandMarkLoc);
+		// Setup Grade level selection dropdown
+		Spinner spinner = (Spinner) findViewById(R.id.spinnerGradeLevel);
 	    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-	            this, R.array.selLandMarkLoc, android.R.layout.simple_spinner_item);
+	            this, R.array.selGradeLevel, android.R.layout.simple_spinner_item);
 	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	    spinner.setAdapter(adapter);
-	    
+	    spinner.setAdapter(adapter);	    
 	    spinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
+	    
+	    // Setup Number of questions selection dropdown
+		Spinner spinner2 = (Spinner) findViewById(R.id.spinnerNumQuestions);
+	    ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
+	            this, R.array.selNumQuestions, android.R.layout.simple_spinner_item);
+	    adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+	    spinner2.setAdapter(adapter2);
+	    spinner2.setOnItemSelectedListener(new MyOnItemSelectedListener());
 	}
 	
 	public class MyOnItemSelectedListener implements OnItemSelectedListener {
 
 	    public void onItemSelected(AdapterView<?> parent,
 	        View view, int pos, long id) {
-	      Toast.makeText(parent.getContext(), "Landmark Location selected was " +
+	      Toast.makeText(parent.getContext(), "Grade level selection was " +
 	          parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
 	    }
 
@@ -54,7 +62,8 @@ public class DistanceStartActivity extends Activity  implements OnClickListener{
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.playGameButton:
-			startActivity(new Intent(this, DistanceGameActivity.class));
+			// user clicks play game button to go to Conversion Game
+			//startActivity(new Intent(this, ConversionGameActivity.class));
 			break;
 		}
 		
