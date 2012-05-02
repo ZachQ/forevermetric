@@ -16,6 +16,27 @@ public class DistanceGame {
 			objectsList.add(tempObject);
 			tempObject = new DistanceGameObject("How many kilometers are you from The Ohio Stadium?", Measurement.KILOMETER, 40.001667, -83.019722);
 			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many kilometers are you from The Empire State Building?", Measurement.KILOMETER, 40.748433, -73.985656);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many kilometers are you from Mount Rushmore?", Measurement.KILOMETER, 43.878947, -103.459825);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many kilometers are you from the Space Needle?", Measurement.KILOMETER, 47.6204, -122.3491);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many kilometers are you from Niagara Falls?", Measurement.KILOMETER, 43.08, -79.071);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many kilometers are you from The White House?", Measurement.KILOMETER, 38.897669, -77.03655);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many kilometers are you from The Liberty Bell?", Measurement.KILOMETER, 39.949486, -75.150294);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many kilometers are you from The Golden Gate bridge", Measurement.KILOMETER, 37.819722, -122.478611);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many kilometers are you from The Statue of Liberty", Measurement.KILOMETER, 40.689167, -74.044444);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many kilometers are you from Hoover Dam", Measurement.KILOMETER, 36.015556, -114.737778);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many kilometers are you from The Gateway Arch", Measurement.KILOMETER, 38.62452, -90.18471);
+			objectsList.add(tempObject);
+			
 			
 		} if(landmarkLocation.compareTo("Europe") == 0 || landmarkLocation.compareTo("All") == 0) {
 			
@@ -37,8 +58,7 @@ public class DistanceGame {
 	
 	
 	
-	public double checkAnswer(String userGuess, double userLat, double userLong) {
-		double percentError = 0;
+	public double getAnswer(double userLat, double userLong) {
 		
 		 //set location of current question
 		Location questionDestination = new Location("");
@@ -54,9 +74,7 @@ public class DistanceGame {
 		if(curQuestion.getMeasurement().equals(Measurement.KILOMETER)) {
 			correctAnswer /= 1000;
 		}
-		double userGuessDub = Double.valueOf(userGuess); //TODO put in try catch for invalid strings
-		percentError = (((userGuessDub-correctAnswer)/correctAnswer)*100);
-		return percentError;
+		return correctAnswer;
 	}
 	
 	public String getQuestionText() {
