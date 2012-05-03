@@ -49,7 +49,7 @@ public class ConversionStartActivity extends Activity  implements OnClickListene
 
 	    public void onItemSelected(AdapterView<?> parent,
 	        View view, int pos, long id) {
-	      Toast.makeText(parent.getContext(), "Grade level selection was " +
+	      Toast.makeText(parent.getContext(), "Selection was " +
 	          parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
 	    }
 
