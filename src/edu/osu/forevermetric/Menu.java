@@ -24,6 +24,10 @@ public class Menu extends Activity implements OnClickListener{
 		// Setup for Conversion Game Button
 		View conversionButton = (Button) findViewById(R.id.bConversion);
 		conversionButton.setOnClickListener(this);
+		
+		// Setup for About Button
+		View aboutButton = (Button) findViewById(R.id.bAbout);
+		aboutButton.setOnClickListener(this);
 	}
 
 	@Override
@@ -37,6 +41,9 @@ public class Menu extends Activity implements OnClickListener{
 			// if the user clicks conversion game, start that activity
 			startActivity(new Intent(this,ConversionStartActivity.class));
 			break;
+		case R.id.bAbout:
+			//if the user clicks conversion game, start that activity
+			startActivity(new Intent(this,About.class));
 		}
 	} 
 	

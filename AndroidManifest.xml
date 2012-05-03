@@ -35,6 +35,7 @@
         <activity android:name="DistanceStartActivity" />
         <activity android:name="ConversionStartActivity" />
         <activity android:name="DistanceGameActivity" />
+        <activity android:name="About"></activity>
             
         
     </application>
