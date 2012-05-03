@@ -27,6 +27,9 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 
 	// testing timer
 	private long startTime = System.currentTimeMillis() / 1000;
+	
+	//tester question num
+	private int numQ;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,14 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 		score = 0;
 		questionNumber = 1;
 		curGame = new DistanceGame("USA");
+		
+		//testing param pass of Q
+		Bundle extras = getIntent().getExtras();
+		if(extras !=null) {
+		String value = extras.getString("numQuestions");
+		numQ= Integer.parseInt(value);
+		}
+		
 
 		setContentView(R.layout.distance_game);
 		// set first question
@@ -92,7 +103,7 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 
 			// get/display next question
 			questionNumber++;
-			if (questionNumber >= 11) {
+			if (questionNumber > numQ) {
 				startActivity(new Intent(this, Menu.class));
 			} else {
 				curGame.getNewQuestion();
