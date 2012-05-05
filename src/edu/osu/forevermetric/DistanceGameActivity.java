@@ -20,7 +20,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class DistanceGameActivity extends Activity implements OnClickListener {
-	private int score;
+	private double totalPercentError;
+	private double avgPercentError;
 	private int questionNumber;
 	private DistanceGame curGame;
 	private LocationManager locationManager;
@@ -34,7 +35,8 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		score = 0;
+		totalPercentError = 0;
+		avgPercentError = 0;
 		questionNumber = 1;
 		curGame = new DistanceGame("USA");
 		
@@ -42,6 +44,8 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 		Bundle extras = getIntent().getExtras();
 		if(extras !=null) {
 		String value = extras.getString("numQuestions");
+		String location = extras.getString("landmarkLocation");
+		curGame = new DistanceGame(location);
 		numQ= Integer.parseInt(value);
 		}
 		
@@ -52,8 +56,7 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 
 		TextView textview = new TextView(this);
 		textview = (TextView) findViewById(R.id.questionTextView);
-		textview.setText("Question #" + questionNumber + " "
-				+ curGame.getQuestionText());
+		textview.setText("Question #" + questionNumber + " "+ curGame.getQuestionText());
 		// create locationmanager
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -80,44 +83,52 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 			double userLong = userLocation.getLongitude();
 			// get correct answer
 			double correctAnswer = curGame.getAnswer(userLat, userLong);
-			double userGuessDub = Double.valueOf(userGuess); // TODO put in try
-																// catch for
-																// invalid
-																// strings
-			double percentError = (Math
-					.abs(((userGuessDub - correctAnswer) / correctAnswer) * 100));
-			// Timer
-			long curr = (System.currentTimeMillis() / 1000) - startTime;
-			// display stuff
-			TextView display = new TextView(this);
-			display = (TextView) findViewById(R.id.answerField);
-			display.setText("You are located at " + roundTwoDecimals(userLat)
-					+ " " + roundTwoDecimals(userLong) + "\n"
-					+ "You were within "
-					+ Double.toString(roundTwoDecimals(percentError))
-					+ "% of the correct answer\n" + "Your guess was "
-					+ userGuess + ", correct answer was "
-					+ roundTwoDecimals(correctAnswer)
-					+ "\n Your current time: " + curr + "s");
-			// TODO counter for score and total
-
-			// get/display next question
-			questionNumber++;
-			if (questionNumber > numQ) {
-				startActivity(new Intent(this, Menu.class));
-			} else {
-				curGame.getNewQuestion();
-				TextView textview = new TextView(this);
-				textview = (TextView) findViewById(R.id.questionTextView);
-				textview.setText("Question #" + questionNumber + " "
-						+ curGame.getQuestionText());
-				// hide soft keyboard(had to put because soft keyboard would not
-				// go away)
-				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-				imm.hideSoftInputFromWindow(editText.getWindowToken(),
-						InputMethodManager.HIDE_NOT_ALWAYS);
-				// clear editText field
-				editText.setText("");
+			try {
+				double userGuessDub = Double.valueOf(userGuess); 
+				double percentError = (Math.abs(((userGuessDub - correctAnswer) / correctAnswer) * 100));
+				totalPercentError += percentError;
+				avgPercentError = totalPercentError / questionNumber;
+				// Timer
+				long curr = (System.currentTimeMillis() / 1000) - startTime;
+				// display stuff
+				TextView display = new TextView(this);
+				display = (TextView) findViewById(R.id.answerField);
+				display.setText("You are located at " + roundTwoDecimals(userLat)
+						+ " " + roundTwoDecimals(userLong) + "\n"
+						+ "You were within "
+						+ Double.toString(roundTwoDecimals(percentError))
+						+ "% of the correct answer\n" + "Your guess was "
+						+ userGuess + ", correct answer was "
+						+ roundTwoDecimals(correctAnswer)
+						+ "\n Your current time: " + curr + "s");
+	
+				// get/display next question
+				questionNumber++;
+				if (questionNumber > numQ) {
+					
+					Bundle bun = new Bundle();
+					bun.putDouble("percentError",avgPercentError );
+					bun.putInt("numQuestions", questionNumber - 1);
+					Intent i = new Intent(getApplicationContext(), ResultsActivity.class);
+					i.putExtras(bun);
+					startActivity(i);
+				} else {
+					curGame.getNewQuestion();
+					TextView textview = new TextView(this);
+					textview = (TextView) findViewById(R.id.questionTextView);
+					textview.setText("Question #" + questionNumber + " "
+							+ curGame.getQuestionText());
+					// hide soft keyboard(had to put because soft keyboard would not
+					// go away)
+					InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					imm.hideSoftInputFromWindow(editText.getWindowToken(),
+							InputMethodManager.HIDE_NOT_ALWAYS);
+					// clear editText field
+					editText.setText("");
+				}
+			} catch(NumberFormatException e){
+				TextView display = (TextView) findViewById(R.id.answerField);
+				display.setText("Invalid entry, please enter a decimal number");
 			}
 			break;
 

@@ -20,8 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class DistanceStartActivity extends Activity implements OnClickListener {
-	
 	private String numQ;
+	private String  landmarkLocation;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,6 +60,7 @@ public class DistanceStartActivity extends Activity implements OnClickListener {
 						"Land mark selected was "
 								+ parent.getItemAtPosition(pos).toString(),
 						Toast.LENGTH_LONG).show();
+				landmarkLocation = parent.getItemAtPosition(pos).toString();
 				break;
 			case R.id.spinnerNumQuestions:
 				Toast.makeText(
@@ -82,6 +84,7 @@ public class DistanceStartActivity extends Activity implements OnClickListener {
 		case R.id.playGameButton:
 			Bundle bun = new Bundle();
 			bun.putString("numQuestions", numQ);
+			bun.putString("landmarkLocation", landmarkLocation);
 			Intent i = new Intent(getApplicationContext(), DistanceGameActivity.class);
 			i.putExtras(bun);
 			startActivity(i);

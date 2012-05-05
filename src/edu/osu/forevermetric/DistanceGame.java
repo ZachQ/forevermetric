@@ -39,9 +39,55 @@ public class DistanceGame {
 			
 			
 		} if(landmarkLocation.compareTo("Europe") == 0 || landmarkLocation.compareTo("All") == 0) {
-			
+			DistanceGameObject tempObject = new DistanceGameObject("How many Kilometers are you from The Eiffel Tower?", Measurement.KILOMETER, 48.8583, 2.2945);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from The Eiffel Tower?", Measurement.KILOMETER, 48.8583, 2.2945);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from The Colosseum?", Measurement.KILOMETER, 41.890169, 12.492269);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from Big Ben?", Measurement.KILOMETER, 51.500611, -0.124611);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from The Leaning Tower of Pisa?", Measurement.KILOMETER, 43.722944, 10.396611);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from The Pantheon?", Measurement.KILOMETER, 37.971421, 23.726166);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from Stonehenge?", Measurement.KILOMETER, 51.178844, -1.826189);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from Buckingham Palace?", Measurement.KILOMETER, 51.501, -0.142);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from Windsor Castle", Measurement.KILOMETER, 51.483889, -0.604444);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from The Sistine Chapel?", Measurement.KILOMETER, 41.903056, 12.454444);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from The Grand Canal in Venice?", Measurement.KILOMETER, 45.436667, 12.333056);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from Neuschwanstein Castle?", Measurement.KILOMETER, 47.5575, 10.75);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from Pompeii?", Measurement.KILOMETER, 40.751, 14.487);
+			objectsList.add(tempObject);
 		} if(landmarkLocation.compareTo("Asia") == 0 || landmarkLocation.compareTo("All") == 0) {
-			
+			DistanceGameObject tempObject = new DistanceGameObject("How many Kilometers are you from The Taj Mahal?", Measurement.KILOMETER, 27.174167, 78.042222);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from Angkor Wat?", Measurement.KILOMETER, 13.4125, 103.866667);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from The Forbidden City?", Measurement.KILOMETER, 39.914722, 116.390556);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from The Temple of Heaven?", Measurement.KILOMETER, 39.882242, 116.406469);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from Potala Palace?", Measurement.KILOMETER, 29.657778, 91.116944);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from Mount Tai?", Measurement.KILOMETER, 36.255833, 117.1075);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from Burj Khalifa?", Measurement.KILOMETER, 25.197139, 55.274111);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from Mount Fuji?", Measurement.KILOMETER, 35.358, 138.731);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from The Petronas Towers?", Measurement.KILOMETER, 3.15785, 101.71165);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from Bangkok?", Measurement.KILOMETER, 13.752222, 100.493889);
+			objectsList.add(tempObject);
+			tempObject = new DistanceGameObject("How many Kilometers are you from beijing?", Measurement.KILOMETER, 39.913889, 116.391667);
+			objectsList.add(tempObject);
 		}
 	}
 	
