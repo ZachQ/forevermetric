@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 
 public class ConversionStartActivity extends Activity  implements OnClickListener{
+	private String numQ, gradeLevel;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,11 +48,27 @@ public class ConversionStartActivity extends Activity  implements OnClickListene
 	
 	public class MyOnItemSelectedListener implements OnItemSelectedListener {
 
-	    public void onItemSelected(AdapterView<?> parent,
-	        View view, int pos, long id) {
-	      Toast.makeText(parent.getContext(), "Selection was " +
-	          parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
-	    }
+		public void onItemSelected(AdapterView<?> parent, View view, int pos,
+				long id) {
+			switch (parent.getId()) {
+				case R.id.spinnerGradeLevel:
+					Toast.makeText(
+							parent.getContext(),
+							"Grade level selected was "
+									+ parent.getItemAtPosition(pos).toString(),
+							Toast.LENGTH_LONG).show();
+					gradeLevel = parent.getItemAtPosition(pos).toString();
+				break;
+				case R.id.spinnerNumQuestions:
+					Toast.makeText(
+							parent.getContext(),
+							"Number of questions selected was "
+									+ parent.getItemAtPosition(pos).toString(),
+							Toast.LENGTH_LONG).show();
+					numQ = parent.getItemAtPosition(pos).toString();
+				break;
+			}
+		}
 
 	    public void onNothingSelected(AdapterView parent) {
 	      // Do nothing.
@@ -63,7 +80,12 @@ public class ConversionStartActivity extends Activity  implements OnClickListene
 		switch(v.getId()) {
 		case R.id.playGameButton:
 			// user clicks play game button to go to Conversion Game
-			//startActivity(new Intent(this, ConversionGameActivity.class));
+			Bundle bun = new Bundle();
+			bun.putString("numQuestions", numQ);
+			bun.putString("gradeLevel", gradeLevel);
+			Intent i = new Intent(getApplicationContext(), ConversionGameActivity.class);
+			i.putExtras(bun);
+			startActivity(i);
 			break;
 		}
 		
