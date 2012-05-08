@@ -21,7 +21,6 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 	private int questionNumber;
 	private ConversionGame curGame;
 	private LocationManager locationManager;
-	private String gradeLevel = "MiddleSchool"; // HARDCODED NOW BUT CHANGE TO BE HIGH SCHOOL
 
 	// testing timer
 	private long startTime = System.currentTimeMillis() / 1000;
@@ -35,13 +34,14 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 		totalPercentError = 0;
 		avgPercentError = 0;
 		questionNumber = 1;
-		curGame = new ConversionGame(gradeLevel);
+		curGame = new ConversionGame("MiddleSchool");
 		
 		//testing param pass of Q
 		Bundle extras = getIntent().getExtras();
 		if(extras !=null) {
 			String value = extras.getString("numQuestions");
 			String gradeLevel = extras.getString("gradeLevel");
+			System.out.println("feiaojo "+gradeLevel);
 			curGame = new ConversionGame(gradeLevel);
 			numQ = Integer.parseInt(value);
 		}
