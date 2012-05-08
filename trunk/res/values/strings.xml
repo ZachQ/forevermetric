@@ -12,7 +12,6 @@
     </string-array>
     <string name="landMarkLoc">Please select a landmark location</string>
     <string-array name="selGradeLevel">
-        <item >ElementarySchool</item>
         <item >MiddleSchool</item>
         <item >HighSchool</item>
     </string-array>
