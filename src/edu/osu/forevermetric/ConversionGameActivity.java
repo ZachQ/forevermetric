@@ -22,10 +22,10 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 	private ConversionGame curGame;
 	private LocationManager locationManager;
 
-	// testing timer
+	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
 	
-	//tester question num
+	//Number of questions to be answered
 	private int numQ;
 
 	@Override
@@ -96,6 +96,7 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 					Intent i = new Intent(getApplicationContext(), ResultsActivity.class);
 					i.putExtras(bun);
 					startActivity(i);
+					finish();
 				} else {
 					curGame.getNewQuestion();
 					TextView textview = new TextView(this);
