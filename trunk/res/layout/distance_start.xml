@@ -15,7 +15,7 @@
         android:id="@+id/spinnerLandMarkLoc"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:prompt="@+string/selLandMarkLoc"
+        android:prompt="@string/selectLandmarkLoc"
     />
     <TextView
 	        android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:id="@+id/spinnerNumQuestions"
-	        android:prompt="@+string/selNumQuestions"
+	        android:prompt="@string/selectNumQuestions"
 	    />
     
     

@@ -27,5 +27,8 @@
         <item >9</item>
         <item >10</item>
     </string-array>
+    <string name="selectGradeLevel">Choose a grade level</string>
+    <string name="selectNumQuestions">Choose number of questions</string>
+    <string name="selectLandmarkLoc">Select a landmark location</string>
 
 </resources>

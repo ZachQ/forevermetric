@@ -23,7 +23,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="38dp"
 	        android:id="@+id/spinnerGradeLevel"
-	        android:prompt="@+string/selGradeLevel"
+	        android:prompt="@string/selectGradeLevel"
 	    />
 	</LinearLayout>
     
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 	    <TextView
-	        android:layout_weight="80"
+	        android:layout_weight="70"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="5dip"
@@ -41,11 +41,11 @@
 	        android:text="Number of Questions"
 	    />
 	    <Spinner 
-	        android:layout_weight="20"
+	        android:layout_weight="30"
 	        android:layout_width="wrap_content"
 	        android:layout_height="38dp"
 	        android:id="@+id/spinnerNumQuestions"
-	        android:prompt="@+string/selNumQuestions"
+	        android:prompt="@string/selectNumQuestions"
 	    />
 	</LinearLayout>
     
@@ -74,7 +74,7 @@
         android:layout_gravity="center" />
     
     <Button
-        android:id="@+id/howToPlayButtondis"
+        android:id="@+id/howToPlayButtondid"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
