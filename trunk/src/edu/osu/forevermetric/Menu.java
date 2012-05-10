@@ -40,7 +40,7 @@ public class Menu extends Activity implements OnClickListener{
 			break;
 		case R.id.bAbout:
 			//if the user clicks conversion game, start that activity
-			startActivity(new Intent(this, MapTestActivity.class));
+			startActivity(new Intent(this, About.class));
 			break;
 		}
 	} 

@@ -32,7 +32,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>        
         </activity>
-        <activity android:name="MapTestActivity" />
         <activity android:name="DistanceStartActivity" />
         <activity android:name="ConversionStartActivity" />
         <activity android:name="DistanceGameActivity" />
