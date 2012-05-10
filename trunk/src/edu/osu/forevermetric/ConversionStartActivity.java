@@ -52,19 +52,9 @@ public class ConversionStartActivity extends Activity  implements OnClickListene
 				long id) {
 			switch (parent.getId()) {
 				case R.id.spinnerGradeLevel:
-					Toast.makeText(
-							parent.getContext(),
-							"Grade level selected was "
-									+ parent.getItemAtPosition(pos).toString(),
-							Toast.LENGTH_LONG).show();
 					gradeLevel = parent.getItemAtPosition(pos).toString();
 				break;
 				case R.id.spinnerNumQuestions:
-					Toast.makeText(
-							parent.getContext(),
-							"Number of questions selected was "
-									+ parent.getItemAtPosition(pos).toString(),
-							Toast.LENGTH_LONG).show();
 					numQ = parent.getItemAtPosition(pos).toString();
 				break;
 			}

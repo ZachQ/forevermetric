@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,16 +19,27 @@ public class ResultsActivity extends Activity implements OnClickListener{
 		setContentView(R.layout.results_activity);
 		//get extras from bundle
 		Bundle extras = getIntent().getExtras();
-		double percentError = extras.getDouble("percentError");
-		int numQuestions = extras.getInt("numQuestions");
-		TextView textview = new TextView(this);
-		textview = (TextView) findViewById(R.id.resultsTextView);
-		//set results text
-		textview.setText("Your answered " + numQuestions + " questions with a total percent Error of " + roundTwoDecimals(percentError));
-		
-		//return button
-		View returnButton = (Button) findViewById(R.id.bMenuReturn);
-		returnButton.setOnClickListener(this);
+		if(extras !=null) {
+			double percentError = extras.getDouble("percentError");
+			int numQuestions = extras.getInt("numQuestions");
+			String[] results = extras.getStringArray("results");
+			TextView textview = new TextView(this);
+			textview = (TextView) findViewById(R.id.resultsTextView);
+			TextView topTextview = new TextView(this);
+			topTextview = (TextView) findViewById(R.id.resultsTopTextView);
+			//set results 
+			int i = 0;
+			while(i < results.length) {
+				textview.append(results[i]);
+				textview.append("\n");
+				i++;
+			}
+			topTextview.setText("Your answered " + numQuestions + " questions with a total percent Error of " + roundTwoDecimals(percentError));
+			textview.setMovementMethod(new ScrollingMovementMethod());
+			//return button
+			View returnButton = (Button) findViewById(R.id.bMenuReturn);
+			returnButton.setOnClickListener(this);
+		}
 	}
 
 	@Override

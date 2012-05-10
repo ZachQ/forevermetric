@@ -9,19 +9,28 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingTop="20dp"
-        android:text="@string/results"
+        android:paddingTop="0dp"
         android:textSize="30dp" 
+        android:text="@string/results"
     	android:layout_weight="0.1"/>
+    
 
+    <TextView 
+        android:id="@+id/resultsTopTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:textSize="20dp" 
+    	android:layout_weight="0.1"/>
     <TextView
         android:id="@+id/resultsTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.85"
-        android:gravity="center"
+        android:gravity="left"
         android:paddingTop="20dp"
-        android:textSize="30dp" />
+        android:textSize="15dp" />
 
     <Button
         android:id="@+id/bMenuReturn"

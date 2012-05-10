@@ -21,7 +21,8 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 	private int questionNumber;
 	private ConversionGame curGame;
 	private LocationManager locationManager;
-
+	private String[] results;
+	
 	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
 	
@@ -45,7 +46,7 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 			curGame = new ConversionGame(gradeLevel);
 			numQ = Integer.parseInt(value);
 		}
-		
+		results = new String[numQ];
 		setContentView(R.layout.conversion_game);
 		
 		// set first question
@@ -87,12 +88,15 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 						+ roundTwoDecimals(correctAnswer)
 						+ "\n Your current time: " + curr + "s");
 	
+				results[questionNumber - 1] = "#" + questionNumber + " guess: "  + userGuess + " answer: " + roundTwoDecimals(correctAnswer) + " time: " + curr + "s";
+
 				// get/display next question
 				questionNumber++;
 				if (questionNumber > numQ) {
 					Bundle bun = new Bundle();
 					bun.putDouble("percentError",avgPercentError );
 					bun.putInt("numQuestions", questionNumber - 1);
+					bun.putStringArray("results", results);
 					Intent i = new Intent(getApplicationContext(), ResultsActivity.class);
 					i.putExtras(bun);
 					startActivity(i);
