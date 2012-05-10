@@ -55,19 +55,9 @@ public class DistanceStartActivity extends Activity implements OnClickListener {
 				long id) {
 			switch (parent.getId()) {
 			case R.id.spinnerLandMarkLoc:
-				Toast.makeText(
-						parent.getContext(),
-						"Land mark selected was "
-								+ parent.getItemAtPosition(pos).toString(),
-						Toast.LENGTH_LONG).show();
 				landmarkLocation = parent.getItemAtPosition(pos).toString();
 				break;
 			case R.id.spinnerNumQuestions:
-				Toast.makeText(
-						parent.getContext(),
-						"Selection was "
-								+ parent.getItemAtPosition(pos).toString(),
-						Toast.LENGTH_LONG).show();
 				numQ = parent.getItemAtPosition(pos).toString();
 				break;
 			}

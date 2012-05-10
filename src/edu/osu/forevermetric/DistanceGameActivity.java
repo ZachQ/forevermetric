@@ -25,6 +25,7 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 	private int questionNumber;
 	private DistanceGame curGame;
 	private LocationManager locationManager;
+	private String[] results;
 
 	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
@@ -48,8 +49,8 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 		curGame = new DistanceGame(location);
 		numQ= Integer.parseInt(value);
 		}
+		results = new String[numQ];
 		
-
 		setContentView(R.layout.distance_game);
 		// set first question
 		curGame.getNewQuestion();
@@ -102,6 +103,8 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 						+ roundTwoDecimals(correctAnswer)
 						+ "\n Your current time: " + curr + "s");
 	
+				//put guess in results for results activity
+				results[questionNumber - 1] = "#" + questionNumber + " guess: "  + userGuess + " answer: " + roundTwoDecimals(correctAnswer);
 				// get/display next question
 				questionNumber++;
 				if (questionNumber > numQ) {
@@ -109,6 +112,7 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 					Bundle bun = new Bundle();
 					bun.putDouble("percentError",avgPercentError );
 					bun.putInt("numQuestions", questionNumber - 1);
+					bun.putStringArray("results", results);
 					Intent i = new Intent(getApplicationContext(), ResultsActivity.class);
 					i.putExtras(bun);
 					startActivity(i);
