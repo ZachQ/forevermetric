@@ -103,7 +103,12 @@ public class DistanceGame {
 	}
 	
 	
-	
+	public String[] getQuestionLocation() {
+		String[] coordinates = new String[2];
+		coordinates[0] = String.valueOf(curQuestion.getLatitude());
+		coordinates[1] = String.valueOf(curQuestion.getLongitude());
+		return coordinates;
+	}
 	public double getAnswer(double userLat, double userLong) {
 		
 		 //set location of current question
@@ -119,6 +124,8 @@ public class DistanceGame {
 		//convert to Kilometer if current question deals with kilometers
 		if(curQuestion.getMeasurement().equals(Measurement.KILOMETER)) {
 			correctAnswer /= 1000;
+		} else if(curQuestion.getMeasurement().equals(Measurement.MILE)) {
+			correctAnswer *= 0.00062137119;
 		}
 		return correctAnswer;
 	}

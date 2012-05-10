@@ -2,6 +2,11 @@ package edu.osu.forevermetric;
 
 import java.text.DecimalFormat;
 
+import com.google.android.maps.GeoPoint;
+import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapController;
+import com.google.android.maps.MapView;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,14 +24,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class DistanceGameActivity extends Activity implements OnClickListener {
+public class DistanceGameActivity extends MapActivity implements OnClickListener {
 	private double totalPercentError;
 	private double avgPercentError;
 	private int questionNumber;
 	private DistanceGame curGame;
 	private LocationManager locationManager;
 	private String[] results;
-
+	private TextView textview;
+	private MapView mapView;
+	private MapController mc;
+    private GeoPoint p;
+	
 	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
 	
@@ -54,13 +63,17 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.distance_game);
 		// set first question
 		curGame.getNewQuestion();
-
-		TextView textview = new TextView(this);
+		//create text view for question
+		textview = new TextView(this);
 		textview = (TextView) findViewById(R.id.questionTextView);
+		//create mapView for displaying map;
+		mapView = (MapView) findViewById(R.id.mapView);
+		//set text and map
 		textview.setText("Question #" + questionNumber + " "+ curGame.getQuestionText());
+		mapIt();
 		// create locationmanager
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
+		
 		// create button
 		View guessButton = (Button) findViewById(R.id.distanceGameButton);
 		guessButton.setOnClickListener(this);
@@ -91,18 +104,6 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 				avgPercentError = totalPercentError / questionNumber;
 				// Timer
 				long curr = (System.currentTimeMillis() / 1000) - startTime;
-				// display stuff
-				TextView display = new TextView(this);
-				display = (TextView) findViewById(R.id.answerField);
-				display.setText("You are located at " + roundTwoDecimals(userLat)
-						+ " " + roundTwoDecimals(userLong) + "\n"
-						+ "You were within "
-						+ Double.toString(roundTwoDecimals(percentError))
-						+ "% of the correct answer\n" + "Your guess was "
-						+ userGuess + ", correct answer was "
-						+ roundTwoDecimals(correctAnswer)
-						+ "\n Your current time: " + curr + "s");
-	
 				//put guess in results for results activity
 				results[questionNumber - 1] = "#" + questionNumber + " guess: "  + userGuess + " answer: " + roundTwoDecimals(correctAnswer);
 				// get/display next question
@@ -121,8 +122,8 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 					curGame.getNewQuestion();
 					TextView textview = new TextView(this);
 					textview = (TextView) findViewById(R.id.questionTextView);
-					textview.setText("Question #" + questionNumber + " "
-							+ curGame.getQuestionText());
+					textview.setText("Question #" + questionNumber + " "+ curGame.getQuestionText());
+					mapIt();
 					// hide soft keyboard(had to put because soft keyboard would not
 					// go away)
 					InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -136,14 +137,33 @@ public class DistanceGameActivity extends Activity implements OnClickListener {
 				display.setText("Invalid entry, please enter a decimal number");
 			}
 			break;
-
 		}
-
 	}
 
 	double roundTwoDecimals(double d) {
 		DecimalFormat twoDForm = new DecimalFormat("#.##");
 		return Double.valueOf(twoDForm.format(d));
+	}
+	
+	void mapIt() {
+		 mapView.setBuiltInZoomControls(true);
+		 mc = mapView.getController();
+		 String[] coor = curGame.getQuestionLocation();
+		 String coordinates[] = {coor[0], coor[1]};
+		 double lat = Double.parseDouble(coordinates[0]);
+		 double lng = Double.parseDouble(coordinates[1]);
+		 
+		 p = new GeoPoint((int) (lat * 1E6),(int) (lng * 1E6));
+		 
+		 mc.animateTo(p);
+		 mc.setZoom(10); 
+		 mapView.invalidate();
+	}
+
+	@Override
+	protected boolean isRouteDisplayed() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
