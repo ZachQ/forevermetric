@@ -2,6 +2,7 @@
 <resources>
 
     <string name="welcome">Welcome!</string>
+    <string name="mapIt">Map It!</string>
     <string name="results">Results:</string>
     <string name="app_name">ForeverMetric</string>
     <string-array name="selLandMarkLoc">

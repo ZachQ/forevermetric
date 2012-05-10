@@ -1,8 +1,5 @@
 package edu.osu.forevermetric;
 
-
-
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,7 +40,8 @@ public class Menu extends Activity implements OnClickListener{
 			break;
 		case R.id.bAbout:
 			//if the user clicks conversion game, start that activity
-			startActivity(new Intent(this,About.class));
+			startActivity(new Intent(this, MapTestActivity.class));
+			break;
 		}
 	} 
 	
