@@ -25,7 +25,7 @@ public class DistanceGameObject {
 	public double getLongitude() {
 		return longitude;
 	}
-	
+
 	public Measurement getMeasurement() {
 		return measurement;
 	}

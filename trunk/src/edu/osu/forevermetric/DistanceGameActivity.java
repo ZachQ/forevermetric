@@ -1,11 +1,13 @@
 package edu.osu.forevermetric;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
+import com.google.android.maps.Overlay;
 
 import android.app.Activity;
 import android.content.Context;
@@ -35,7 +37,9 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 	private MapView mapView;
 	private MapController mc;
     private GeoPoint p;
-	
+    private DrawOverlay locationOverlay;
+    private Location userLocation;
+    
 	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
 	
@@ -70,13 +74,16 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 		mapView = (MapView) findViewById(R.id.mapView);
 		//set text and map
 		textview.setText("Question #" + questionNumber + " "+ curGame.getQuestionText());
-		mapIt();
 		// create locationmanager
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		
+		Criteria criteria = new Criteria();
+		userLocation = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, true));
+		mapIt();
 		// create button
 		View guessButton = (Button) findViewById(R.id.distanceGameButton);
 		guessButton.setOnClickListener(this);
+		
+		//create overlay for display
 	}
 
 	@Override
@@ -88,11 +95,9 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 			String userGuess = editText.getText().toString();
 
 			// get users location
-			Location userLocation = null;
-			Criteria criteria = new Criteria(); // TODO possibly set this to do
-												// something later
-			userLocation = locationManager.getLastKnownLocation(locationManager
-					.getBestProvider(criteria, true));
+			userLocation = null;
+			Criteria criteria = new Criteria(); // TODO possibly set this to do something later
+			userLocation = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, true));
 			double userLat = userLocation.getLatitude();
 			double userLong = userLocation.getLongitude();
 			// get correct answer
@@ -106,6 +111,8 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 				long curr = (System.currentTimeMillis() / 1000) - startTime;
 				//put guess in results for results activity
 				results[questionNumber - 1] = "#" + questionNumber + " guess: "  + userGuess + " answer: " + roundTwoDecimals(correctAnswer);
+				
+				
 				// get/display next question
 				questionNumber++;
 				if (questionNumber > numQ) {
@@ -148,6 +155,7 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 	void mapIt() {
 		 mapView.setBuiltInZoomControls(true);
 		 mc = mapView.getController();
+		 
 		 String[] coor = curGame.getQuestionLocation();
 		 String coordinates[] = {coor[0], coor[1]};
 		 double lat = Double.parseDouble(coordinates[0]);
@@ -156,8 +164,14 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 		 p = new GeoPoint((int) (lat * 1E6),(int) (lng * 1E6));
 		 
 		 mc.animateTo(p);
-		 mc.setZoom(10); 
-		 mapView.invalidate();
+		 mc.setZoom(5); 
+		 
+		locationOverlay = new DrawOverlay(getApplicationContext());
+		locationOverlay.setLocation(userLocation, coor);
+		List<Overlay> overlays = mapView.getOverlays();
+		overlays.clear();
+		overlays.add(locationOverlay);
+		mapView.invalidate();
 	}
 
 	@Override
