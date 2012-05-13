@@ -25,6 +25,8 @@
         
         <activity
             android:name=".Menu"
+            android:configChanges="keyboardHidden|orientation" 
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
                	<action android:name="edu.osu.forevermetric.MENU" />
@@ -32,12 +34,20 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>        
         </activity>
-        <activity android:name="DistanceStartActivity" />
-        <activity android:name="ConversionStartActivity" />
+        <activity android:name="DistanceStartActivity"
+            android:configChanges="keyboardHidden|orientation" 
+            android:screenOrientation="portrait" />
+        <activity android:name="ConversionStartActivity"
+        	android:configChanges="keyboardHidden|orientation" 
+            android:screenOrientation="portrait" />
         <activity android:name="DistanceGameActivity" />
         <activity android:name="ConversionGameActivity" />
-        <activity android:name="ResultsActivity" />
-        <activity android:name="About" />
+        <activity android:name="ResultsActivity"
+        	android:configChanges="keyboardHidden|orientation" 
+            android:screenOrientation="portrait" />
+        <activity android:name="About"
+            android:configChanges="keyboardHidden|orientation" 
+            android:screenOrientation="portrait" />
        
             
     	<uses-library android:name="com.google.android.maps" /> 

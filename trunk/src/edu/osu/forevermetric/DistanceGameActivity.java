@@ -34,6 +34,7 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 	private LocationManager locationManager;
 	private String[] results;
 	private TextView textview;
+	private EditText editText;
 	private MapView mapView;
 	private MapController mc;
     private GeoPoint p;
@@ -82,8 +83,8 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 		// create button
 		View guessButton = (Button) findViewById(R.id.distanceGameButton);
 		guessButton.setOnClickListener(this);
-		
-		//create overlay for display
+		//set editText button to keypad only
+		editText = (EditText) findViewById(R.id.usersGuess);
 	}
 
 	@Override
@@ -91,8 +92,8 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 		switch (v.getId()) {
 		case R.id.distanceGameButton:
 			// get guess
-			EditText editText = (EditText) findViewById(R.id.usersGuess);
 			String userGuess = editText.getText().toString();
+			
 
 			// get users location
 			userLocation = null;
