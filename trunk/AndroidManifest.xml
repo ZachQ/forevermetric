@@ -48,6 +48,8 @@
         <activity android:name="About"
             android:configChanges="keyboardHidden|orientation" 
             android:screenOrientation="portrait" />
+        <activity android:name="HowTPConversion" />
+        <activity android:name="HowTPDistance" />
        
             
     	<uses-library android:name="com.google.android.maps" /> 

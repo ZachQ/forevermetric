@@ -15,9 +15,9 @@ public class Splash extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
         
-        // Have the splash screen wait 5 seconds and then move onto the Menu
-		final int sleepTime = 5000;
-		// timer to sleep for 5 seconds
+        // Have the splash screen wait 3 seconds and then move onto the Menu
+		final int sleepTime = 3000;
+		// timer to sleep for 3 seconds
 		Thread timer = new Thread() {
 			public void run() {
 				try {

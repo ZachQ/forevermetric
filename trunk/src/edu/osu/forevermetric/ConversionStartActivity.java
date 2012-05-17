@@ -28,6 +28,12 @@ public class ConversionStartActivity extends Activity  implements OnClickListene
 		setContentView(R.layout.conversion_start);
 		View playButton = (Button) findViewById(R.id.playGameButton);
 		playButton.setOnClickListener(this);
+		// Setup for htp Button
+		View aboutButton = (Button) findViewById(R.id.howToPlayButtonCon);
+		aboutButton.setOnClickListener(this);
+		// Setup for hs button
+		View hsButton = (Button) findViewById(R.id.howToPlayButtonCon);
+		hsButton.setOnClickListener(this);
 		
 		// Setup Grade level selection dropdown
 		Spinner spinner = (Spinner) findViewById(R.id.spinnerGradeLevel);
@@ -77,6 +83,13 @@ public class ConversionStartActivity extends Activity  implements OnClickListene
 			i.putExtras(bun);
 			startActivity(i);
 			break;
+		case R.id.howToPlayButtonCon:
+			startActivity(new Intent(this,HowTPConversion.class));
+			break;
+		case R.id.hsButtonCon:
+			startActivity(new Intent(this, HighscoreConversionGame.class));
+			break;
+			
 		}
 		
 	}
