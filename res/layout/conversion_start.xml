@@ -63,7 +63,7 @@
         android:layout_gravity="center" />
     
     <Button
-        android:id="@+id/hsButtondis"
+        android:id="@+id/hsButtonCon"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -74,7 +74,7 @@
         android:layout_gravity="center" />
     
     <Button
-        android:id="@+id/howToPlayButtondid"
+        android:id="@+id/howToPlayButtonCon"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"

@@ -29,6 +29,9 @@ public class DistanceStartActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.distance_start);
 		View playButton = (Button) findViewById(R.id.playGameButton);
 		playButton.setOnClickListener(this);
+		// Setup for htp Button
+		View aboutButton = (Button) findViewById(R.id.howToPlayButtondis);
+		aboutButton.setOnClickListener(this);
 
 		Spinner spinner = (Spinner) findViewById(R.id.spinnerLandMarkLoc);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -78,6 +81,9 @@ public class DistanceStartActivity extends Activity implements OnClickListener {
 			Intent i = new Intent(getApplicationContext(), DistanceGameActivity.class);
 			i.putExtras(bun);
 			startActivity(i);
+			break;
+		case R.id.howToPlayButtondis:
+			startActivity(new Intent(this, HowTPDistance.class));
 			break;
 		}
 
