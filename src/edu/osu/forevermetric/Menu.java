@@ -3,16 +3,21 @@ package edu.osu.forevermetric;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class Menu extends Activity implements OnClickListener{
-
+	private final String TAG = "Menu";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.menu);
+		
+		// Log
+		Log.i(TAG, "* Activity successful *");
 		
 		// Setup for Distance Game Button
 		View distanceButton = (Button) findViewById(R.id.bDistance);

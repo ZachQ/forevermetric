@@ -22,11 +22,16 @@ import android.widget.Toast;
 public class DistanceStartActivity extends Activity implements OnClickListener {
 	private String numQ;
 	private String  landmarkLocation;
+	private final String TAG = "DistanceStartActivity";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.distance_start);
+		
+		// Log
+		Log.i(TAG, "* Activity successful *");
+				
 		View playButton = (Button) findViewById(R.id.playGameButton);
 		playButton.setOnClickListener(this);
 		// Setup for htp Button

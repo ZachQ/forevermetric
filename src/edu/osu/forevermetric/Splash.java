@@ -5,15 +5,18 @@ import edu.osu.forevermetric.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
+import android.util.Log;
 
 public class Splash extends Activity {
+	private final String TAG = "Splash";
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
+        
+        // Initial Log
+        Log.i(TAG, "* ForeverMetric successfully started *");
         
         // Have the splash screen wait 3 seconds and then move onto the Menu
 		final int sleepTime = 3000;

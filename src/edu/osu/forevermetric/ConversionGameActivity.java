@@ -22,6 +22,7 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 	private ConversionGame curGame;
 	private LocationManager locationManager;
 	private String[] results;
+	private final String TAG = "ConversionGameActivity";
 	
 	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
@@ -37,12 +38,14 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 		questionNumber = 1;
 		curGame = new ConversionGame("MiddleSchool");
 		
+		// Log that actvity successful
+		Log.i(TAG, "* Activity successful *");
+		
 		//testing param pass of Q
 		Bundle extras = getIntent().getExtras();
 		if(extras !=null) {
 			String value = extras.getString("numQuestions");
 			String gradeLevel = extras.getString("gradeLevel");
-			System.out.println("feiaojo "+gradeLevel);
 			curGame = new ConversionGame(gradeLevel);
 			numQ = Integer.parseInt(value);
 		}
@@ -117,6 +120,7 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 				}
 			} catch(NumberFormatException e){
 				TextView display = (TextView) findViewById(R.id.answerField);
+				Log.w(TAG, "* Invalid entry *");
 				display.setText("Invalid entry, please enter a decimal number");
 			}
 			break;

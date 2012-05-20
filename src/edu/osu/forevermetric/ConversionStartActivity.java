@@ -21,11 +21,16 @@ import android.widget.Toast;
 
 public class ConversionStartActivity extends Activity  implements OnClickListener{
 	private String numQ, gradeLevel;
+	private final String TAG = "ConversionStartActivity";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.conversion_start);
+		
+		// Log
+		Log.i(TAG, "* Activity successful *");
+		
 		View playButton = (Button) findViewById(R.id.playGameButton);
 		playButton.setOnClickListener(this);
 		// Setup for htp Button

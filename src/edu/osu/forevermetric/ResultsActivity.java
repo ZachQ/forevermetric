@@ -6,17 +6,23 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class ResultsActivity extends Activity implements OnClickListener{
-
+	private final String TAG = "ResultsActivity";
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) { 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.results_activity);
+		
+		// Log
+		Log.i(TAG, "* Activity successful *");
+		
 		//get extras from bundle
 		Bundle extras = getIntent().getExtras();
 		if(extras !=null) {
@@ -34,7 +40,7 @@ public class ResultsActivity extends Activity implements OnClickListener{
 				textview.append("\n");
 				i++;
 			}
-			topTextview.setText("Your answered " + numQuestions + " questions with a total percent Error of " + roundTwoDecimals(percentError));
+			topTextview.setText("Your answered " + numQuestions + " questions with a total percent Error of %" + roundTwoDecimals(percentError));
 			textview.setMovementMethod(new ScrollingMovementMethod());
 			//return button
 			View returnButton = (Button) findViewById(R.id.bMenuReturn);

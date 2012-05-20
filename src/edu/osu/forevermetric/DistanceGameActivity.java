@@ -40,6 +40,7 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
     private GeoPoint p;
     private DrawOverlay locationOverlay;
     private Location userLocation;
+    private final String TAG = "DistanceGameActivity";
     
 	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
@@ -54,6 +55,9 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 		avgPercentError = 0;
 		questionNumber = 1;
 		curGame = new DistanceGame("USA");
+		
+		// Log
+		Log.i(TAG, "* Activity successful *");
 		
 		//testing param pass of Q
 		Bundle extras = getIntent().getExtras();
@@ -142,6 +146,7 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 				}
 			} catch(NumberFormatException e){
 				TextView display = (TextView) findViewById(R.id.answerField);
+				Log.w(TAG, "* Invalid entry *");
 				display.setText("Invalid entry, please enter a decimal number");
 			}
 			break;
