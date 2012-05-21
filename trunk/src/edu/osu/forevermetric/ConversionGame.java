@@ -10,14 +10,38 @@ public class ConversionGame {
 	private ConversionGameObject curQuestion;
 	ArrayList<String> MSquestionVals = new ArrayList<String>();
 	ArrayList<String> HSquestionVals = new ArrayList<String>();
+	private Double[][] conversionArray;
 	
 	int count = 1;
 	int numOfQuestions = 10;
 	int MSnumbers = 10000;
 	int HSnumbers = 10000000;
+	// used for conversion array
+	int m = 0; int km = 1; int in = 2;
+	int ft = 3; int mile = 4;
 
 	
 	ConversionGame(String gradeLevel) {
+		// setup the conversion array
+		// 			m			km 				in 			ft 			mile 
+		// 		------------   -------------   ---------   ---------   ----------
+		// m	|	0			.001			39.37		3.28		0.00062137
+		// km	|	1000		0				39370.08	3280.84		0.6213711
+		// in	|	0.0254		2.54 × 10-5		0			0.08333		1.5782 × 10-5
+		// ft	|	0.3048		0.0003048		12			0			0.00018939
+		// mile	|	1609.344	1.609344		63360		5280		0
+		conversionArray[m][m] = 0.0; conversionArray[m][km] = 0.001; conversionArray[m][in] = 39.37;
+		conversionArray[m][ft] = 3.28; conversionArray[m][mile] = 0.00062137; conversionArray[km][m] = 1000.0;
+		conversionArray[km][km] = 0.0; conversionArray[km][in] = 39370.08; conversionArray[km][ft] = 3280.8399;
+		conversionArray[km][mile] = 0.0; conversionArray[in][m] = 0.0254; conversionArray[in][km] = 0.0000254;
+		conversionArray[in][in] = 0.0; conversionArray[in][ft] = 0.0833333; conversionArray[in][m] = 0.000015782;
+		conversionArray[ft][m] = 0.3048; conversionArray[ft][km] = 0.0003048; conversionArray[ft][in] = 12.0;
+		conversionArray[ft][ft] = 0.0; conversionArray[ft][mile] = 0.00018939; conversionArray[mile][m] = 1609.344;
+		conversionArray[mile][km] = 1.609344; conversionArray[mile][in] = 63360.0; conversionArray[mile][ft] = 5280.0;
+		conversionArray[mile][mile] = 0.0;
+		
+		
+		
 		// get the random numbers to be put into the arrayList
 		Random rand = new Random();
 		
@@ -112,111 +136,11 @@ public class ConversionGame {
 	public double getAnswer() {
 		double result = 1;
 		String value = curQuestion.getQuestionValue();
-		switch(curQuestion.getQMeasurement()) {
-			case METER:
-				//convert meters into AnswerMeasurement
-				switch(curQuestion.getAMeasurement()) {
-					case KILOMETER:
-						result = Double.valueOf(value) / 1000;
-						break;
-					case INCH:
-						result = Double.valueOf(value) * 39.3700787;
-						break;
-					case FOOT:
-						result = Double.valueOf(value) * 3.2808399;
-						break;
-					case MILE:
-						result = Double.valueOf(value) * 0.00062137119;
-						break;
-					default:
-						//do nothing
-						break;
-				}
-				break; // break METER
-			case KILOMETER:
-				// convert kilometers into Answer measurement
-				switch(curQuestion.getAMeasurement()) {
-					case METER:
-						result = Double.valueOf(value) * 1000;
-						break;
-					case INCH:
-						result = Double.valueOf(value) * 39370.0787;
-						break;
-					case FOOT:
-						result = Double.valueOf(value) * 3280.8399;
-						break;
-					case MILE:
-						result = Double.valueOf(value) * 0.621371192;
-						break;
-					default:
-						//do nothing
-						break;
-				}
-				break; // break KILOMETER
-			case INCH:
-				// convert inches into Answer measurement
-				switch(curQuestion.getAMeasurement()) {
-					case METER:
-						result = Double.valueOf(value) * 0.0254;
-						break;
-					case KILOMETER:
-						result = Double.valueOf(value) * 0.0000254;
-						break;
-					case FOOT:
-						result = Double.valueOf(value) * 0.0833333333;
-						break;
-					case MILE:
-						result = Double.valueOf(value) * 0.0000157828283;
-						break;
-					default:
-						//do nothing
-						break;
-				}
-				break; // break INCH
-			case FOOT:
-				// convert feet into Answer measurement
-				switch(curQuestion.getAMeasurement()) {
-					case METER:
-						result = Double.valueOf(value) * 0.3048;
-						break;
-					case KILOMETER:
-						result = Double.valueOf(value) * 0.0003048;
-						break;
-					case INCH:
-						result = Double.valueOf(value) * 12;
-						break;
-					case MILE:
-						result = Double.valueOf(value) * 0.000189393939;
-						break;
-					default:
-						//do nothing
-						break;
-				}
-				break; // break FOOT
-			case MILE:
-				// convert miles into Answer measurement
-				switch(curQuestion.getAMeasurement()) {
-					case METER:
-						result = Double.valueOf(value) * 1609.344;
-						break;
-					case KILOMETER:
-						result = Double.valueOf(value) * 1.609344;
-						break;
-					case INCH:
-						result = Double.valueOf(value) * 63360;
-						break;
-					case FOOT:
-						result = Double.valueOf(value) * 5280;
-						break;
-					default:
-						//do nothing
-						break;
-				}
-				break; // break MILE
-			default :
-				// do nothing
-				break;
-		}
+		int Qmes = curQuestion.getQMeasurement();
+		int Ames = curQuestion.getAMeasurement();
+		
+		result = Double.valueOf(value) * conversionArray[Qmes][Ames];
+
 		return result;
 	}
 	
