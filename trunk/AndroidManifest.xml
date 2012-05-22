@@ -40,8 +40,10 @@
         <activity android:name="ConversionStartActivity"
         	android:configChanges="keyboardHidden|orientation" 
             android:screenOrientation="portrait" />
-        <activity android:name="DistanceGameActivity" />
-        <activity android:name="ConversionGameActivity" />
+        <activity android:name="DistanceGameActivity" 
+        	android:configChanges="orientation|keyboardHidden"/>
+        <activity android:name="ConversionGameActivity" 
+            android:configChanges="keyboardHidden|orientation"/>
         <activity android:name="ResultsActivity"
         	android:configChanges="keyboardHidden|orientation" 
             android:screenOrientation="portrait" />
