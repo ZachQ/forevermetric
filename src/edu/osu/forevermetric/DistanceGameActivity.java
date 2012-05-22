@@ -12,6 +12,7 @@ import com.google.android.maps.Overlay;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -25,6 +26,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DistanceGameActivity extends MapActivity implements OnClickListener {
 	private double totalPercentError;
@@ -145,9 +147,11 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 					editText.setText("");
 				}
 			} catch(NumberFormatException e){
-				TextView display = (TextView) findViewById(R.id.answerField);
+				//thrown with bad input
 				Log.w(TAG, "* Invalid entry *");
-				display.setText("Invalid entry, please enter a decimal number");
+			} catch(NullPointerException e2) {
+				//thrown when nothing entered, or just '.'
+				Log.w(TAG, "* Invalid entry *");
 			}
 			break;
 		}
@@ -184,6 +188,11 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 	protected boolean isRouteDisplayed() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+	    super.onConfigurationChanged(newConfig);
 	}
 
 }
