@@ -16,7 +16,7 @@ public class ConversionGameObject {
 	}
 	
 	public int getQMeasurement() {
-		int result = (Integer) null;
+		int result = 0;
 		// These values are used in
 		if(Qmeasurement == Measurement.METER){
 			result = 0;
@@ -30,10 +30,11 @@ public class ConversionGameObject {
 			result = 4;
 		}	
 		return result;
+		//
 	}
 	
 	public int getAMeasurement() {
-		int result = (Integer) null;
+		int result = 0;
 		if(Ameasurement == Measurement.METER){
 			result = 0;
 		} else if(Ameasurement == Measurement.KILOMETER) {
