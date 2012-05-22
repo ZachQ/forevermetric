@@ -30,6 +30,7 @@ public class ConversionGame {
 		// in	|	0.0254		2.54 × 10-5		0			0.08333		1.5782 × 10-5
 		// ft	|	0.3048		0.0003048		12			0			0.00018939
 		// mile	|	1609.344	1.609344		63360		5280		0
+		conversionArray = new Double[5][5];
 		conversionArray[m][m] = 0.0; conversionArray[m][km] = 0.001; conversionArray[m][in] = 39.37;
 		conversionArray[m][ft] = 3.28; conversionArray[m][mile] = 0.00062137; conversionArray[km][m] = 1000.0;
 		conversionArray[km][km] = 0.0; conversionArray[km][in] = 39370.08; conversionArray[km][ft] = 3280.8399;
