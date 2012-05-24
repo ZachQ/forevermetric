@@ -28,6 +28,11 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
 	
+	//Point system
+	private long points=1;
+	//HighscoreObject hScore = new HighscoreObject(this.getApplicationContext());
+	//boolean worked = hScore.addScore("Sean", points);
+	
 	//Number of questions to be answered
 	private int numQ;
 

@@ -37,7 +37,7 @@ public class ConversionStartActivity extends Activity  implements OnClickListene
 		View aboutButton = (Button) findViewById(R.id.howToPlayButtonCon);
 		aboutButton.setOnClickListener(this);
 		// Setup for hs button
-		View hsButton = (Button) findViewById(R.id.howToPlayButtonCon);
+		View hsButton = (Button) findViewById(R.id.hsButtonCon);
 		hsButton.setOnClickListener(this);
 		
 		// Setup Grade level selection dropdown
@@ -92,7 +92,7 @@ public class ConversionStartActivity extends Activity  implements OnClickListene
 			startActivity(new Intent(this,HowTPConversion.class));
 			break;
 		case R.id.hsButtonCon:
-			startActivity(new Intent(this, HighscoreConversionGame.class));
+			startActivity(new Intent(this,HighscoreConversionGame.class));
 			break;
 			
 		}
