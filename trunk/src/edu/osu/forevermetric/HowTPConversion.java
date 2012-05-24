@@ -19,7 +19,6 @@ public class HowTPConversion extends Activity implements OnClickListener{
 		setContentView(R.layout.howtp_conversion);
 		
 		TextView tvCGHTP = (TextView)findViewById(R.id.tvCGHTP);
-		tvCGHTP.setTextColor(Color.WHITE);
 		tvCGHTP.setText(Html.fromHtml(getString(R.string.CGHTP_html)));
 		
 		View backButton = (Button) findViewById(R.id.buttonBacktoConv);

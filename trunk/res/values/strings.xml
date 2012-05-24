@@ -56,6 +56,15 @@ below. If it is the last question in the series then a results
 screen will pop up displaying all your results from that round.</p>
 ]]>
     </string>
+    
+    <string name="DGHTP_html">        <![CDATA[
+<p><b><center>Distance Game</center></b>
+</p><p></p>
+<p>Choose your options and when thegame starts, enter your guess for how far you believe you are from the shown landmark.</p>
+<p>Be carefull, measurements can be in either metric or standard!</p>
+<p>  At the end, make sure you review your results so you can learn the actual distance to the landmark!</p>
+]]>
+    </string>
     <string name="blankHS">Highscore: </string>
 
 </resources>

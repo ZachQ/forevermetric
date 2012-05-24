@@ -40,7 +40,7 @@ public class ResultsActivity extends Activity implements OnClickListener{
 				textview.append("\n");
 				i++;
 			}
-			topTextview.setText("Your answered " + numQuestions + " questions with a total percent Error of %" + roundTwoDecimals(percentError));
+			topTextview.setText("You answered " + numQuestions + " questions with a total percent Error of %" + roundTwoDecimals(percentError));
 			textview.setMovementMethod(new ScrollingMovementMethod());
 			//return button
 			View returnButton = (Button) findViewById(R.id.bMenuReturn);

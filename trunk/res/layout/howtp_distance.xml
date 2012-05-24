@@ -2,23 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical" >
     
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tvDGHTP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="A game where based off your GPS coordinates you have to calculate how far you are away from a land mark.
-        
-        
-        "
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textSize = "20sp" 
+        android:textColor="#000000"
+        android:text="@string/DGHTP_html" />
 
     <Button
         android:id="@+id/buttonBacktoDist"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button"
         android:text="Back" />
     
 </LinearLayout>

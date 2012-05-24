@@ -2,15 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/background">
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="ForeverMetric" 
         android:gravity="center"
+        android:text="ForeverMetric"
+        android:textColor="@color/red"
+        android:layout_marginTop="30dip"
+        android:textSize="35dp" />
+    
+    <Button
+        android:id="@+id/button1"
         android:layout_gravity="center"
-        android:textSize="30dp"
-        />
+        android:layout_width="280dip"
+        android:layout_height="280dip"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dip"
+       	android:layout_centerVertical="true"
+       	android:layout_centerHorizontal="true"
+       	android:background="@drawable/home_osu"
+         />
 
 </LinearLayout>
