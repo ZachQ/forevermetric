@@ -3,6 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     android:padding="10dp">
 
     <LinearLayout
@@ -16,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Question Here"
+            android:textColor="#000000"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </LinearLayout>
 
@@ -37,6 +39,7 @@
             android:id="@+id/conversionGameButton"
             android:layout_width="105dip"
             android:layout_height="wrap_content"
+            android:background="@drawable/button"
             android:text="Submit" />
     </LinearLayout>
 
@@ -46,6 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hint"
+        android:background="@drawable/button"
         android:layout_gravity="right" />
 
     <TextView

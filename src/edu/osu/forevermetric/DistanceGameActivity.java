@@ -120,7 +120,7 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 				// Timer
 				long curr = (System.currentTimeMillis() / 1000) - startTime;
 				//put guess in results for results activity
-				results[questionNumber - 1] = "#" + questionNumber + " guess: "  + userGuess + " answer: " + roundTwoDecimals(correctAnswer);
+				results[questionNumber - 1] = "#" + questionNumber + ") guess: "  + userGuess + " answer: " + roundTwoDecimals(correctAnswer);
 				
 				
 				// get/display next question

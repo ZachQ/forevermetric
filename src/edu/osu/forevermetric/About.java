@@ -28,7 +28,6 @@ public class About extends Activity implements OnClickListener{
 		
 		//testing text print
 		TextView CGabout = (TextView)findViewById(R.id.tvCGabout);
-		CGabout.setTextColor(Color.WHITE);
 		CGabout.setText(Html.fromHtml(getString(R.string.CGabout_html)));
 	}
 	

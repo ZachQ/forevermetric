@@ -3,6 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" 
+    android:background="@drawable/background"
     android:padding="20dp">
     
     <TextView
@@ -10,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dip"
         android:text="@string/landMarkLoc"
+        android:textColor="#000000"
     />
     <Spinner 
         android:id="@+id/spinnerLandMarkLoc"
@@ -22,6 +24,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dip"
 	        android:text="Number of Questions"
+	        android:textColor="#000000"
 	    />
 	    <Spinner 
 	        android:layout_width="fill_parent"
@@ -40,6 +43,7 @@
         android:text="Play Game!"
         android:textSize="20dp" 
         android:gravity="center"
+        android:background="@drawable/button"
         android:layout_gravity="center" />
     
     <Button
@@ -51,6 +55,7 @@
         android:text="High Score"
         android:textSize="20dp" 
         android:gravity="center"
+        android:background="@drawable/button"
         android:layout_gravity="center" />
     
     <Button
@@ -62,6 +67,7 @@
         android:text="How To Play"
         android:textSize="20dp" 
         android:gravity="center"
+        android:background="@drawable/button"
         android:layout_gravity="center" />
 
 </LinearLayout>

@@ -3,6 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" 
+    android:background="@drawable/background"
     android:padding="20dp">
     
     <LinearLayout
@@ -16,6 +17,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="5dip"
 	        android:textSize="20dp"
+	    	android:textColor="#000000"
 	        android:text="Select Grade level"
 	    />
 	    <Spinner 
@@ -38,6 +40,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="5dip"
 	        android:textSize="20dp"
+	        android:textColor="#000000"
 	        android:text="Number of Questions"
 	    />
 	    <Spinner 
@@ -60,6 +63,7 @@
         android:text="Play Game!"
         android:textSize="20dp" 
         android:gravity="center"
+         android:background="@drawable/button"
         android:layout_gravity="center" />
     
     <Button
@@ -71,6 +75,7 @@
         android:text="High Score"
         android:textSize="20dp" 
         android:gravity="center"
+         android:background="@drawable/button"
         android:layout_gravity="center" />
     
     <Button
@@ -82,6 +87,7 @@
         android:text="How To Play"
         android:textSize="20dp" 
         android:gravity="center"
+         android:background="@drawable/button"
         android:layout_gravity="center" />
 
 </LinearLayout>
