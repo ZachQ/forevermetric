@@ -5,31 +5,57 @@
     <string name="mapIt">Map It!</string>
     <string name="results">Results:</string>
     <string name="app_name">ForeverMetric</string>
+
     <string-array name="selLandMarkLoc">
         <item>USA</item>
         <item>Europe</item>
         <item>Asia</item>
         <item>All</item>
     </string-array>
+
     <string name="landMarkLoc">Please select a landmark location</string>
+
     <string-array name="selGradeLevel">
-        <item >MiddleSchool</item>
-        <item >HighSchool</item>
+        <item>MiddleSchool</item>
+        <item>HighSchool</item>
     </string-array>
     <string-array name="selNumQuestions">
-        <item >1</item>
-        <item >2</item>
-        <item >3</item>
-        <item >4</item>
-        <item >5</item>
-        <item >6</item>
-        <item >7</item>
-        <item >8</item>
-        <item >9</item>
-        <item >10</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
     </string-array>
+
     <string name="selectGradeLevel">Choose a grade level</string>
     <string name="selectNumQuestions">Choose number of questions</string>
     <string name="selectLandmarkLoc">Select a landmark location</string>
+    <string name="CGabout_html">        <![CDATA[
+<p><b>Conversion Game:</b> A game where you convert
+measurements given to you in both English and Metric systems.
+</p><p></p>
+<p><b>Distance Game:</b> A game where based off your GPS
+coordinates you have to calculate how far you are away from
+a land mark.</p>
+]]>
+    </string>
+    <string name="CGHTP_html">        <![CDATA[
+<p><b><center>Conversion Game</center></b>
+</p><p></p>
+<p>A question will appear at the top of your screen asking
+you to convert some measurement. Click on the blinking cruiser/blank
+box to bring up your keyboard. Type in your guess than hit the Submit
+button.</p>
+<p>Once submitted results of your last guess will be displayed
+below. If it is the last question in the series then a results
+screen will pop up displaying all your results from that round.</p>
+]]>
+    </string>
+    <string name="blankHS">Highscore: </string>
 
 </resources>

@@ -52,6 +52,7 @@
             android:screenOrientation="portrait" />
         <activity android:name="HowTPConversion" />
         <activity android:name="HowTPDistance" />
+        <activity android:name="HighscoreConversionGame"/>
        
             
     	<uses-library android:name="com.google.android.maps" /> 

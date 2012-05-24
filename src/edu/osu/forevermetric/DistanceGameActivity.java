@@ -47,6 +47,9 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
 	
+	//points system
+	private int points=1;
+	
 	//Number of Questions to be answered
 	private int numQ;
 
