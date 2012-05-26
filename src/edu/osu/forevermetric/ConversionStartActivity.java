@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 public class ConversionStartActivity extends Activity  implements OnClickListener{
 	private String numQ, gradeLevel;
 	private final String TAG = "ConversionStartActivity";
+	private EditText userName;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,8 @@ public class ConversionStartActivity extends Activity  implements OnClickListene
 		// Setup for hs button
 		View hsButton = (Button) findViewById(R.id.hsButtonCon);
 		hsButton.setOnClickListener(this);
+		// set up for edit text
+		userName = (EditText) findViewById(R.id.etNameCon);
 		
 		// Setup Grade level selection dropdown
 		Spinner spinner = (Spinner) findViewById(R.id.spinnerGradeLevel);
@@ -84,6 +88,7 @@ public class ConversionStartActivity extends Activity  implements OnClickListene
 			Bundle bun = new Bundle();
 			bun.putString("numQuestions", numQ);
 			bun.putString("gradeLevel", gradeLevel);
+			bun.putString("userName", userName.getText().toString());
 			Intent i = new Intent(getApplicationContext(), ConversionGameActivity.class);
 			i.putExtras(bun);
 			startActivity(i);

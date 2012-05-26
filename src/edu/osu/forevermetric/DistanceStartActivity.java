@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,8 @@ public class DistanceStartActivity extends Activity implements OnClickListener {
 	private String numQ;
 	private String  landmarkLocation;
 	private final String TAG = "DistanceStartActivity";
+	private EditText userName;
+
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,12 @@ public class DistanceStartActivity extends Activity implements OnClickListener {
 		// Setup for htp Button
 		View aboutButton = (Button) findViewById(R.id.howToPlayButtondis);
 		aboutButton.setOnClickListener(this);
-
+		//setup HS button
+		View hsButton = (Button) findViewById(R.id.hsButtondis);
+		hsButton.setOnClickListener(this);
+		// set up for edit text
+		userName = (EditText) findViewById(R.id.etNameDis);
+		
 		Spinner spinner = (Spinner) findViewById(R.id.spinnerLandMarkLoc);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this, R.array.selLandMarkLoc,
@@ -83,12 +91,16 @@ public class DistanceStartActivity extends Activity implements OnClickListener {
 			Bundle bun = new Bundle();
 			bun.putString("numQuestions", numQ);
 			bun.putString("landmarkLocation", landmarkLocation);
+			bun.putString("userName", userName.getText().toString());
 			Intent i = new Intent(getApplicationContext(), DistanceGameActivity.class);
 			i.putExtras(bun);
 			startActivity(i);
 			break;
 		case R.id.howToPlayButtondis:
 			startActivity(new Intent(this, HowTPDistance.class));
+			break;
+		case R.id.hsButtondis:
+			startActivity(new Intent(this, HighscoreDistanceGame.class));
 			break;
 		}
 

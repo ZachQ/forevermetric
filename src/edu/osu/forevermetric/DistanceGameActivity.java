@@ -43,12 +43,14 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
     private DrawOverlay locationOverlay;
     private Location userLocation;
     private final String TAG = "DistanceGameActivity";
+	private String userN="Name input error";
+
     
 	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
 	
 	//points system
-	private int points=1;
+	private long points=100;
 	
 	//Number of Questions to be answered
 	private int numQ;
@@ -69,6 +71,7 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 		if(extras !=null) {
 		String value = extras.getString("numQuestions");
 		String location = extras.getString("landmarkLocation");
+		userN = extras.getString("userName");
 		curGame = new DistanceGame(location);
 		numQ= Integer.parseInt(value);
 		}
@@ -133,6 +136,11 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 					bun.putStringArray("results", results);
 					Intent i = new Intent(getApplicationContext(), ResultsActivity.class);
 					i.putExtras(bun);
+					//Publish Highscore
+					//Creates Highscore Object
+					HighscoreObject hScore = new HighscoreObject(this, "DGHS");
+					points = (long) (points-avgPercentError)*numQ;
+					boolean worked = hScore.addScore(userN, points);
 					startActivity(i);
 					finish();
 				} else {
