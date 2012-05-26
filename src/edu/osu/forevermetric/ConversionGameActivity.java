@@ -5,6 +5,8 @@ import java.text.DecimalFormat;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -29,9 +31,10 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 	private long startTime = System.currentTimeMillis() / 1000;
 	
 	//Point system
-	private long points=1;
-	//HighscoreObject hScore = new HighscoreObject(this.getApplicationContext());
-	//boolean worked = hScore.addScore("Sean", points);
+	private long points=100;
+	public static final String CGHS = "CGHS";
+	
+
 	
 	//Number of questions to be answered
 	private int numQ;
@@ -43,6 +46,7 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 		avgPercentError = 0;
 		questionNumber = 1;
 		curGame = new ConversionGame("MiddleSchool");
+		
 		
 		// Log that actvity successful
 		Log.i(TAG, "* Activity successful *");
@@ -109,6 +113,12 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 					Intent i = new Intent(getApplicationContext(), ResultsActivity.class);
 					i.putExtras(bun);
 					startActivity(i);
+					//Publish Highscore
+					//Creates Highscore Object
+					HighscoreObject hScore = new HighscoreObject(this, "CGHS");
+					points = (long) (points-avgPercentError);
+					boolean worked = hScore.addScore("Sean", points);
+					
 					finish();
 				} else {
 					curGame.getNewQuestion();
