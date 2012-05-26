@@ -8,9 +8,10 @@ public class HighscoreObject {
     private String names[];
     private long score[];
 
-    public HighscoreObject(Context context)
+    public HighscoreObject(Context context, String folder)
     {
-            preferences = context.getSharedPreferences("Highscore", 0);
+            //preferences = context.getSharedPreferences("Highscore", 0);
+    		preferences = context.getSharedPreferences(folder, 0);
             names = new String[10];
             score = new long[10];
 

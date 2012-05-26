@@ -53,6 +53,8 @@
         <activity android:name="HowTPConversion" />
         <activity android:name="HowTPDistance" />
         <activity android:name="HighscoreConversionGame"/>
+        <activity android:name="HighscoreObject"/>
+        
        
             
     	<uses-library android:name="com.google.android.maps" /> 

@@ -2,6 +2,7 @@ package edu.osu.forevermetric;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,10 +18,19 @@ public class HighscoreConversionGame extends Activity implements OnClickListener
 		setContentView(R.layout.highscores);
 		
 		//Highscore display
-		HighscoreObject hScore= new HighscoreObject(this);
+		HighscoreObject hScore= new HighscoreObject(this, "CGHS");
 		TextView display = new TextView(this);
 		display = (TextView) findViewById(R.id.hstv);
-		display.setText("1) " + hScore.getName(0)+ " "+hScore.getScore(0));
+		Integer pos=0;
+		Integer posM=-1;
+		display.setTextColor(Color.BLACK);
+		display.append("\n");
+		while(pos<10){
+			pos++;
+			posM++;
+			display.append(pos.toString() +") " + hScore.getName(posM)+ ": "+hScore.getScore(posM) +"\n");
+		}
+		
 		
 		// Setup for back Button
 		View backButton = (Button) findViewById(R.id.bRetFromHS);
