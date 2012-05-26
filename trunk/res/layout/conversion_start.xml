@@ -51,8 +51,18 @@
 	        android:prompt="@string/selectNumQuestions"
 	    />
 	</LinearLayout>
-    
-    
+
+    <EditText
+        android:id="@+id/etNameCon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter Name"
+        android:layout_marginTop="20dp" >
+
+        <requestFocus />
+    </EditText>
     
     <Button
         android:id="@+id/playGameButton"

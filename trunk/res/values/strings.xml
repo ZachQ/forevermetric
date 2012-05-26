@@ -65,6 +65,6 @@ screen will pop up displaying all your results from that round.</p>
 <p>  At the end, make sure you review your results so you can learn the actual distance to the landmark!</p>
 ]]>
     </string>
-    <string name="blankHS">Highscore: </string>
+    <string name="blankHS"></string>
 
 </resources>
