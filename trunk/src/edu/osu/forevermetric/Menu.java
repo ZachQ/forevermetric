@@ -1,12 +1,18 @@
 package edu.osu.forevermetric;
 
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class Menu extends Activity implements OnClickListener{
 	private final String TAG = "Menu";
@@ -33,6 +39,24 @@ public class Menu extends Activity implements OnClickListener{
 	}
 
 	@Override
+	public void onResume() {
+		super.onResume();
+		//check for connectivity
+				boolean connected = isOnline();
+				if(!connected)  {
+					AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+					alertDialog.setTitle("Connectivity");
+					alertDialog.setMessage("No network connectivity was detected.  You may experience issues with the map while playing the distance game.");
+					alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+					   public void onClick(DialogInterface dialog, int which) {
+					      // here you can add functions
+					   }
+					});
+					alertDialog.show();
+				}
+	}
+	
+	@Override
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.bDistance:
@@ -49,5 +73,11 @@ public class Menu extends Activity implements OnClickListener{
 			break;
 		}
 	} 
+	
+	public boolean isOnline() {
+	    ConnectivityManager cm =(ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+	    return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
+	}
 	
 }
