@@ -29,6 +29,7 @@ public class ResultsActivity extends Activity implements OnClickListener{
 			double percentError = extras.getDouble("percentError");
 			int numQuestions = extras.getInt("numQuestions");
 			String[] results = extras.getStringArray("results");
+			long points = extras.getLong("score");
 			TextView textview = new TextView(this);
 			textview = (TextView) findViewById(R.id.resultsTextView);
 			TextView topTextview = new TextView(this);
@@ -40,7 +41,7 @@ public class ResultsActivity extends Activity implements OnClickListener{
 				textview.append("\n");
 				i++;
 			}
-			topTextview.setText("You answered " + numQuestions + " questions with a total percent Error of %" + roundTwoDecimals(percentError));
+			topTextview.setText("Your total percent Error was %" + roundTwoDecimals(percentError) + " earning you a score of " + points + " points!");
 			textview.setMovementMethod(new ScrollingMovementMethod());
 			//return button
 			View returnButton = (Button) findViewById(R.id.bMenuReturn);

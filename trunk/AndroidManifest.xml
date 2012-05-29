@@ -53,9 +53,13 @@
             android:screenOrientation="portrait" />
         <activity android:name="HowTPConversion" />
         <activity android:name="HowTPDistance" />
-        <activity android:name="HighscoreConversionGame"/>
+        <activity android:name="HighscoreConversionGame"
+        	android:configChanges="keyboardHidden|orientation" 
+            android:screenOrientation="portrait" />
         <activity android:name="HighscoreObject"/>
-        <activity android:name="HighscoreDistanceGame"/>
+        <activity android:name="HighscoreDistanceGame"
+        	android:configChanges="keyboardHidden|orientation" 
+            android:screenOrientation="portrait" />
         
        
             

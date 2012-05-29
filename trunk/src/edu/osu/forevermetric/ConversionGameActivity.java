@@ -120,13 +120,16 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 					bun.putInt("numQuestions", questionNumber - 1);
 					bun.putStringArray("results", results);
 					Intent i = new Intent(getApplicationContext(), ResultsActivity.class);
-					i.putExtras(bun);
-					startActivity(i);
+					
 					//Publish Highscore
 					//Creates Highscore Object
 					HighscoreObject hScore = new HighscoreObject(this, "CGHS");
 					points = (long) (points-avgPercentError)*numQ;
+					bun.putLong("score", points);
+					i.putExtras(bun);
 					boolean worked = hScore.addScore(userN, points);
+					startActivity(i);
+					
 					
 					finish();
 				} else {
