@@ -1,6 +1,7 @@
 package edu.osu.forevermetric;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 import android.app.Activity;
 import android.content.Context;
@@ -96,11 +97,17 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 				// display stuff
 				TextView display = new TextView(this);
 				display = (TextView) findViewById(R.id.answerField);
+				
+				// this is for printing out commas to make the output look nice
+				Log.i("ConversionGameAct" ,Double.toString(roundTwoDecimals(correctAnswer)));
+				String correctPP = prettyPrint(Double.toString(roundTwoDecimals(correctAnswer)));
+				Log.i("ConverstionGameCorrectPP", correctPP);
+				
 				display.setText("You were within "
 						+ Double.toString(roundTwoDecimals(percentError))
 						+ "% of the correct answer\n" + "Your guess was "
-						+ userGuess + ", correct answer was "
-						+ roundTwoDecimals(correctAnswer)
+						+ prettyPrint(userGuess) + "\n Correct answer was "
+						+ correctPP
 						+ "\n Your current time: " + curr + "s");
 	
 				results[questionNumber - 1] = "#" + questionNumber + " guess: "  + userGuess + " answer: " + roundTwoDecimals(correctAnswer) + " time: " + curr + "s";
@@ -139,6 +146,7 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 			} catch(NumberFormatException e){
 				TextView display = (TextView) findViewById(R.id.answerField);
 				Log.w(TAG, "* Invalid entry *");
+				Log.i("ConversionGame Catch", userGuess);
 				display.setText("Invalid entry, please enter a decimal number");
 			}
 			break;
@@ -148,6 +156,17 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 	double roundTwoDecimals(double d) {
 		DecimalFormat twoDForm = new DecimalFormat("#.##");
 		return Double.valueOf(twoDForm.format(d));
+	}
+	
+	/**
+	 * This is to format the number to have commas for printing
+	 * @param userguess
+	 * @return
+	 */
+	private String prettyPrint(String userguess){
+		String result = "";	
+		result = NumberFormat.getInstance().format(Double.valueOf(userguess));
+		return result;	
 	}
 	
 	@Override
