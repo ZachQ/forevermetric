@@ -4,6 +4,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
+import android.util.Log;
+
 public class ConversionGame {
 	
 	private ArrayList<ConversionGameObject> objectsList;
@@ -15,7 +17,7 @@ public class ConversionGame {
 	int count = 1;
 	int numOfQuestions = 10;
 	int MSnumbers = 10000;
-	int HSnumbers = 10000000;
+	int HSnumbers = 1000000;
 	// used for conversion array
 	int m = 0; int km = 1; int in = 2;
 	int ft = 3; int mile = 4;
@@ -34,8 +36,8 @@ public class ConversionGame {
 		conversionArray[m][m] = 0.0; conversionArray[m][km] = 0.001; conversionArray[m][in] = 39.37;
 		conversionArray[m][ft] = 3.28; conversionArray[m][mile] = 0.00062137; conversionArray[km][m] = 1000.0;
 		conversionArray[km][km] = 0.0; conversionArray[km][in] = 39370.08; conversionArray[km][ft] = 3280.8399;
-		conversionArray[km][mile] = 0.0; conversionArray[in][m] = 0.0254; conversionArray[in][km] = 0.0000254;
-		conversionArray[in][in] = 0.0; conversionArray[in][ft] = 0.0833333; conversionArray[in][m] = 0.000015782;
+		conversionArray[km][mile] = 0.621371192; conversionArray[in][m] = 0.0254; conversionArray[in][km] = 0.0000254;
+		conversionArray[in][in] = 0.0; conversionArray[in][ft] = 0.0833333; conversionArray[in][mile] = 0.000015782;
 		conversionArray[ft][m] = 0.3048; conversionArray[ft][km] = 0.0003048; conversionArray[ft][in] = 12.0;
 		conversionArray[ft][ft] = 0.0; conversionArray[ft][mile] = 0.00018939; conversionArray[mile][m] = 1609.344;
 		conversionArray[mile][km] = 1.609344; conversionArray[mile][in] = 63360.0; conversionArray[mile][ft] = 5280.0;
@@ -141,7 +143,6 @@ public class ConversionGame {
 		int Ames = curQuestion.getAMeasurement();
 		
 		result = Double.valueOf(value) * conversionArray[Qmes][Ames];
-
 		return result;
 	}
 	
