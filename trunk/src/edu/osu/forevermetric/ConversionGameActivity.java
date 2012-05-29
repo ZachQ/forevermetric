@@ -110,7 +110,7 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 						+ correctPP
 						+ "\n Your current time: " + curr + "s");
 	
-				results[questionNumber - 1] = "#" + questionNumber + " guess: "  + userGuess + " answer: " + roundTwoDecimals(correctAnswer) + " time: " + curr + "s";
+				results[questionNumber - 1] = "#" + questionNumber + " guess: "  + prettyPrint(userGuess) + " answer: " + correctPP + " time: " + curr + "s";
 
 				// get/display next question
 				questionNumber++;
