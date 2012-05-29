@@ -69,11 +69,11 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 		//testing param pass of Q
 		Bundle extras = getIntent().getExtras();
 		if(extras !=null) {
-		String value = extras.getString("numQuestions");
-		String location = extras.getString("landmarkLocation");
-		userN = extras.getString("userName");
-		curGame = new DistanceGame(location);
-		numQ= Integer.parseInt(value);
+			String value = extras.getString("numQuestions");
+			String location = extras.getString("landmarkLocation");
+			userN = extras.getString("userName");
+			curGame = new DistanceGame(location);
+			numQ= Integer.parseInt(value);
 		}
 		results = new String[numQ];
 		
@@ -135,11 +135,13 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 					bun.putInt("numQuestions", questionNumber - 1);
 					bun.putStringArray("results", results);
 					Intent i = new Intent(getApplicationContext(), ResultsActivity.class);
-					i.putExtras(bun);
+					
 					//Publish Highscore
 					//Creates Highscore Object
 					HighscoreObject hScore = new HighscoreObject(this, "DGHS");
 					points = (long) (points-avgPercentError)*numQ;
+					bun.putLong("score", points);
+					i.putExtras(bun);
 					boolean worked = hScore.addScore(userN, points);
 					startActivity(i);
 					finish();
