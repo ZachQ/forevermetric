@@ -196,6 +196,15 @@ public class DistanceGame {
 		return correctAnswer;
 	}
 	
+	public String getUnit() {
+		String unit = null;
+		if(curQuestion.getMeasurement().equals(Measurement.MILE)) {
+			unit = "miles";
+		} else if(curQuestion.getMeasurement().equals(Measurement.KILOMETER)) {
+			unit = "km";
+		}
+		return unit;
+	}
 	public String getQuestionText() {
 		return curQuestion.getQuestionText();
 	}

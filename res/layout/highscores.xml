@@ -1,29 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tablayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical" >
-    
-    
+
     <TextView
+        android:id="@+id/TextView01"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Highscores" 
         android:gravity="center"
-        android:layout_gravity="center"
+        android:text="Highscores"
         android:textColor="#000000"
-        android:textSize="30dp"
-        />
-     <TextView 
-        android:id="@+id/hstv"
-        android:layout_width="fill_parent"
+        android:textSize="30dp" />
+<TableRow>
+     <TextView
+        android:id="@+id/pos1"
+        android:layout_width="0dp"
+        android:background="@drawable/back"
         android:layout_height="wrap_content"
-        android:gravity="left"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:text="@string/blankHS"
-        />
+        android:text="Pos"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="10pt"
+        android:textStyle="bold" 
+        android:layout_weight = ".2"/>
+
+      <TextView
+          android:id="@+id/name2"
+          android:layout_gravity="left"
+          android:background="@drawable/back"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:text="Name"
+          android:textAppearance="?android:attr/textAppearanceLarge"
+          android:textSize="10pt"
+          android:textStyle="bold"
+          android:layout_weight = ".4" />
+
+
+
+      <TextView
+          android:id="@+id/score3"
+          android:layout_gravity="left"
+          android:background="@drawable/back"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight=".4"
+          android:text="Score"
+          android:textAppearance="?android:attr/textAppearanceLarge"
+          android:textSize="10pt"
+          android:textStyle="bold" />
+</TableRow>
+    <ListView
+        android:id="@+id/scoresList"
+        android:layout_width="fill_parent"
+        android:layout_height="376dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/highscoresTxt"
+        android:layout_weight="0.80"
+        android:cacheColorHint="#00000000" />
 
     <Button
         android:id="@+id/bRetFromHS"
@@ -32,4 +68,4 @@
         android:background="@drawable/button"
         android:text="Return" />
 
-</LinearLayout>
+</TableLayout>

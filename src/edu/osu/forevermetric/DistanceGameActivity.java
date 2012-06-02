@@ -19,6 +19,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -115,6 +116,7 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 			double userLong = userLocation.getLongitude();
 			// get correct answer
 			double correctAnswer = curGame.getAnswer(userLat, userLong);
+			String unit = curGame.getUnit();
 			try {
 				double userGuessDub = Double.valueOf(userGuess); 
 				double percentError = (Math.abs(((userGuessDub - correctAnswer) / correctAnswer) * 100));
@@ -123,7 +125,8 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 				// Timer
 				long curr = (System.currentTimeMillis() / 1000) - startTime;
 				//put guess in results for results activity
-				results[questionNumber - 1] = "#" + questionNumber + ") guess: "  + userGuess + " answer: " + roundTwoDecimals(correctAnswer);
+				
+				results[questionNumber - 1] = "<b>#" + questionNumber + ") </b><strong><em>guess: </strong></em>"  + userGuess + " " + unit + "<b><br>\t &nbsp answer: </b>" + roundTwoDecimals(correctAnswer) + " " + unit;
 				
 				
 				// get/display next question

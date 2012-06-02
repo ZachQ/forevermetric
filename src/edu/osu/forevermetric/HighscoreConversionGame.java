@@ -1,5 +1,8 @@
 package edu.osu.forevermetric;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,28 +10,40 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 public class HighscoreConversionGame extends Activity implements OnClickListener{
-
+	private ArrayList<HashMap<String, String>> scoresList = new ArrayList<HashMap<String, String>>();
+	private SimpleAdapter scoreAdapter;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.highscores);
-		
+		ListView scoreListView = (ListView) findViewById(R.id.scoresList);
+		scoreAdapter = new SimpleAdapter(this, scoresList, R.layout.highscorerow, new String[] { "pos", "name", "score"}, new int[] { R.id.col1, R.id.col2, R.id.col3});
+		scoreListView.setAdapter(scoreAdapter);
 		//Highscore display
 		HighscoreObject hScore= new HighscoreObject(this, "CGHS");
-		TextView display = new TextView(this);
-		display = (TextView) findViewById(R.id.hstv);
 		Integer pos=0;
 		Integer posM=-1;
-		display.setTextColor(Color.BLACK);
-		display.append("\n");
 		while(pos<10){
+			HashMap<String, String> rowData = new HashMap<String, String>();
+			TableRow tr = new TableRow(this);
 			pos++;
 			posM++;
-			display.append(pos.toString() +") " + hScore.getName(posM)+ ": "+hScore.getScore(posM) +"\n");
+			String position = pos.toString() +") ";
+			String uName = hScore.getName(posM);
+			String uScore = Long.toString(hScore.getScore(posM));
+			rowData.put("pos",position);
+			rowData.put("name",uName);
+			rowData.put("score",uScore);
+			scoresList.add(rowData);
 		}
 		
 		

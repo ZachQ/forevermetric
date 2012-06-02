@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -37,7 +38,7 @@ public class ResultsActivity extends Activity implements OnClickListener{
 			//set results 
 			int i = 0;
 			while(i < results.length) {
-				textview.append(results[i]);
+				textview.append(Html.fromHtml(results[i]));
 				textview.append("\n");
 				i++;
 			}
