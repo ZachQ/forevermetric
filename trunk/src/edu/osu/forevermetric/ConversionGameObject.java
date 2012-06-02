@@ -15,6 +15,11 @@ public class ConversionGameObject {
 		return question;
 	}
 	
+	/**
+	 * This method is called in ConversionGame.java used to get the 
+	 * correct matrix value
+	 * @return integer representing the proper row/column in the matrix
+	 */
 	public int getQMeasurement() {
 		int result = 0;
 		// These values are used in
@@ -30,9 +35,13 @@ public class ConversionGameObject {
 			result = 4;
 		}	
 		return result;
-		//
 	}
 	
+	/**
+	 * This method is called in ConversionGame.java used to get the 
+	 * correct matrix value
+	 * @return integer representing the proper row/column in the matrix
+	 */
 	public int getAMeasurement() {
 		int result = 0;
 		if(Ameasurement == Measurement.METER){
@@ -49,6 +58,50 @@ public class ConversionGameObject {
 		return result;
 	}
 	
+	/**
+	 * This method returns a string value of 'm' 'km' 'miles' 'in' or 'ft'
+	 * @return String representation of the question's units
+	 */
+	public String getQUnits() {
+		String result = "";
+		if(Qmeasurement == Measurement.METER){
+			result = "m";
+		} else if(Qmeasurement == Measurement.KILOMETER) {
+			result = "km";
+		} else if(Qmeasurement == Measurement.INCH) {
+			result = "in";
+		} else if(Qmeasurement == Measurement.FOOT) {
+			result = "ft";
+		}  else if(Qmeasurement == Measurement.MILE) {
+			result = "miles";
+		}
+		return result;
+	}
+	
+	/**
+	 * This method returns a string value of 'm' 'km' 'miles' 'in' or 'ft'
+	 * @return String representation of the answer's units
+	 */
+	public String getAUnits() {
+		String result = "";
+		if(Ameasurement == Measurement.METER){
+			result = "m";
+		} else if(Ameasurement == Measurement.KILOMETER) {
+			result = "km";
+		} else if(Ameasurement == Measurement.INCH) {
+			result = "in";
+		} else if(Ameasurement == Measurement.FOOT) {
+			result ="ft";
+		}  else if(Ameasurement == Measurement.MILE) {
+			result = "miles";
+		}
+		return result;
+	}
+	
+	/**
+	 * This gives the String value of the question number
+	 * @return String representation of the random question number
+	 */
 	public String getQuestionValue() {
 		return Qvalue;
 	}
