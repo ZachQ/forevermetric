@@ -38,6 +38,7 @@ public class ResultsActivity extends Activity implements OnClickListener{
 			ArrayList<String> answers = extras.getStringArrayList("answer");
 			ArrayList<String> guess = extras.getStringArrayList("guess");
 			long points = extras.getLong("score");
+			boolean onHS = extras.getBoolean("madeHS");
 			TextView topTextview = new TextView(this);
 			topTextview = (TextView) findViewById(R.id.resultsTopTextView);
 			//set results 
@@ -54,6 +55,9 @@ public class ResultsActivity extends Activity implements OnClickListener{
 				i++;
 			}
 			topTextview.setText("You have earned a score of " + points + " points!");
+			if(onHS){
+				topTextview.append("\n NEW HIGH SCORE!!!");
+			}
 			//return button
 			View returnButton = (Button) findViewById(R.id.bMenuReturn);
 			returnButton.setOnClickListener(this);

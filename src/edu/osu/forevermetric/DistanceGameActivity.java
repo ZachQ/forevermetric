@@ -213,8 +213,9 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 					HighscoreObject hScore = new HighscoreObject(this, "DGHS");
 					points = (long) (points-avgPercentError)*numQ;
 					bun.putLong("score", points);
-					i.putExtras(bun);
 					boolean worked = hScore.addScore(userN, points);
+					bun.putBoolean("madeHS", worked);
+					i.putExtras(bun);
 					startActivity(i);
 					finish();
 				} else {
