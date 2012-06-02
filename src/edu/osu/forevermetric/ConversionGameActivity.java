@@ -87,6 +87,9 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 			
 			// get correct answer
 			double correctAnswer = curGame.getAnswer();
+			// get the units for display purposes
+			String Aunits = curGame.getAnswerUnits();
+			String Qunits = curGame.getQuestionUnits();
 			try {
 				double userGuessDub = Double.valueOf(userGuess);
 				double percentError = (Math.abs(((userGuessDub - correctAnswer) / correctAnswer) * 100));
@@ -103,14 +106,15 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 				String correctPP = prettyPrint(Double.toString(roundTwoDecimals(correctAnswer)));
 				Log.i("ConverstionGameCorrectPP", correctPP);
 				
-				display.setText("You were within "
+				display.setText("* You were within "
 						+ Double.toString(roundTwoDecimals(percentError))
-						+ "% of the correct answer\n" + "Your guess was "
-						+ prettyPrint(userGuess) + "\n Correct answer was "
-						+ correctPP
-						+ "\n Your current time: " + curr + "s");
+						+ "% of the correct answer\n" + "* Your guess was "
+						+ prettyPrint(userGuess) + Aunits + "\n * Correct answer was "
+						+ correctPP + Qunits
+						+ "\n * Your current time: " + curr + "s");
 	
-				results[questionNumber - 1] = "#" + questionNumber + " guess: "  + prettyPrint(userGuess) + " answer: " + correctPP + " time: " + curr + "s";
+				results[questionNumber - 1] = "#" + questionNumber + " guess: "  + prettyPrint(userGuess) + 
+						Aunits +" answer: " + correctPP + Aunits + " time: " + curr + "s";
 
 				// get/display next question
 				questionNumber++;

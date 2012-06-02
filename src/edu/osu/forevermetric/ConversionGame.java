@@ -146,6 +146,16 @@ public class ConversionGame {
 		return result;
 	}
 	
+	public String getAnswerUnits() {
+		String result = curQuestion.getAUnits();
+		return result;
+	}
+	
+	public String getQuestionUnits() {
+		String result = curQuestion.getQUnits();
+		return result;
+	}
+	
 	public String getQuestionText() {
 		return curQuestion.getQuestionText();
 	}
