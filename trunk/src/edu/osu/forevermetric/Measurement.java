@@ -1,5 +1,5 @@
 package edu.osu.forevermetric;
 
 public enum Measurement {
-	METER, KILOMETER, INCH, FOOT, MILE;
+	METER, KILOMETER, MILLIMETER, INCH, FOOT, MILE;
 }

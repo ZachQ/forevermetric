@@ -1,5 +1,9 @@
 package edu.osu.forevermetric;
 
+/**
+ * This class is used to create a Conversion object 
+ * @author Zach
+ */
 public class ConversionGameObject {
 	private String question, Qvalue;
 	private Measurement Qmeasurement, Ameasurement;
@@ -27,12 +31,14 @@ public class ConversionGameObject {
 			result = 0;
 		} else if(Qmeasurement == Measurement.KILOMETER) {
 			result = 1;
-		} else if(Qmeasurement == Measurement.INCH) {
+		} else if(Qmeasurement == Measurement.MILLIMETER) {
 			result = 2;
-		} else if(Qmeasurement == Measurement.FOOT) {
+		} else if(Qmeasurement == Measurement.INCH) {
 			result = 3;
-		}  else if(Qmeasurement == Measurement.MILE) {
+		} else if(Qmeasurement == Measurement.FOOT) {
 			result = 4;
+		}  else if(Qmeasurement == Measurement.MILE) {
+			result = 5;
 		}	
 		return result;
 	}
@@ -48,12 +54,14 @@ public class ConversionGameObject {
 			result = 0;
 		} else if(Ameasurement == Measurement.KILOMETER) {
 			result = 1;
-		} else if(Ameasurement == Measurement.INCH) {
+		} else if(Ameasurement == Measurement.MILLIMETER) {
 			result = 2;
-		} else if(Ameasurement == Measurement.FOOT) {
+		} else if(Ameasurement == Measurement.INCH) {
 			result = 3;
-		}  else if(Ameasurement == Measurement.MILE) {
+		} else if(Ameasurement == Measurement.FOOT) {
 			result = 4;
+		}  else if(Ameasurement == Measurement.MILE) {
+			result = 5;
 		}
 		return result;
 	}
@@ -68,6 +76,8 @@ public class ConversionGameObject {
 			result = "m";
 		} else if(Qmeasurement == Measurement.KILOMETER) {
 			result = "km";
+		}else if(Qmeasurement == Measurement.MILLIMETER) {
+			result = "mm";
 		} else if(Qmeasurement == Measurement.INCH) {
 			result = "in";
 		} else if(Qmeasurement == Measurement.FOOT) {
@@ -88,6 +98,8 @@ public class ConversionGameObject {
 			result = "m";
 		} else if(Ameasurement == Measurement.KILOMETER) {
 			result = "km";
+		} else if(Ameasurement == Measurement.MILLIMETER) {
+			result = "mm";
 		} else if(Ameasurement == Measurement.INCH) {
 			result = "in";
 		} else if(Ameasurement == Measurement.FOOT) {
