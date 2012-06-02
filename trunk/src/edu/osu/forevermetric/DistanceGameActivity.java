@@ -1,6 +1,8 @@
 package edu.osu.forevermetric;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.google.android.maps.GeoPoint;
@@ -45,8 +47,8 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
     private Location userLocation;
     private final String TAG = "DistanceGameActivity";
 	private String userN="Name input error";
-
-    
+	private ArrayList<String> guessList;
+	private ArrayList<String> answerList;
 	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
 	
@@ -63,6 +65,8 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 		avgPercentError = 0;
 		questionNumber = 1;
 		curGame = new DistanceGame("USA");
+		answerList = new ArrayList<String>();
+		guessList = new ArrayList<String>();
 		
 		// Log
 		Log.i(TAG, "* Activity successful *");
@@ -102,6 +106,7 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 
 	@Override
 	public void onClick(View v) {
+		HashMap<String, String> rowData = new HashMap<String, String>();
 		switch (v.getId()) {
 		case R.id.distanceGameButton:
 			// get guess
@@ -125,10 +130,10 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 				// Timer
 				long curr = (System.currentTimeMillis() / 1000) - startTime;
 				//put guess in results for results activity
-				
-				results[questionNumber - 1] = "<b>#" + questionNumber + ") </b><strong><em>guess: </strong></em>"  + userGuess + " " + unit + "<b><br>\t &nbsp answer: </b>" + roundTwoDecimals(correctAnswer) + " " + unit;
-				
-				
+				String guess = userGuess + " " + unit;
+				String answer = roundTwoDecimals(correctAnswer) + " " + unit;
+				guessList.add(guess);
+				answerList.add(answer);
 				// get/display next question
 				questionNumber++;
 				if (questionNumber > numQ) {
@@ -136,7 +141,8 @@ public class DistanceGameActivity extends MapActivity implements OnClickListener
 					Bundle bun = new Bundle();
 					bun.putDouble("percentError",avgPercentError );
 					bun.putInt("numQuestions", questionNumber - 1);
-					bun.putStringArray("results", results);
+					bun.putStringArrayList("guess", guessList);
+					bun.putStringArrayList("answer", answerList);
 					Intent i = new Intent(getApplicationContext(), ResultsActivity.class);
 					
 					//Publish Highscore

@@ -2,6 +2,7 @@ package edu.osu.forevermetric;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
@@ -27,6 +28,8 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 	private LocationManager locationManager;
 	private String[] results;
 	private final String TAG = "ConversionGameActivity";
+	private ArrayList<String> guessList;
+	private ArrayList<String> answerList;
 	
 	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
@@ -48,7 +51,8 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 		avgPercentError = 0;
 		questionNumber = 1;
 		curGame = new ConversionGame("MiddleSchool");
-		
+		answerList = new ArrayList<String>();
+		guessList = new ArrayList<String>();
 		
 		// Log that actvity successful
 		Log.i(TAG, "* Activity successful *");
@@ -113,8 +117,8 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 						+ correctPP + Qunits
 						+ "\n * Your current time: " + curr + "s");
 	
-				results[questionNumber - 1] = "#" + questionNumber + " guess: "  + prettyPrint(userGuess) + 
-						Aunits +" answer: " + correctPP + Aunits + " time: " + curr + "s";
+				guessList.add(prettyPrint(userGuess) + " " + Aunits);
+				answerList.add(correctPP + " " + Aunits);
 
 				// get/display next question
 				questionNumber++;
@@ -122,7 +126,8 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 					Bundle bun = new Bundle();
 					bun.putDouble("percentError",avgPercentError );
 					bun.putInt("numQuestions", questionNumber - 1);
-					bun.putStringArray("results", results);
+					bun.putStringArrayList("guess", guessList);
+					bun.putStringArrayList("answer", answerList);
 					Intent i = new Intent(getApplicationContext(), ResultsActivity.class);
 					
 					//Publish Highscore

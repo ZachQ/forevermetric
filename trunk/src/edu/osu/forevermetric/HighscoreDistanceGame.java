@@ -37,7 +37,6 @@ public class HighscoreDistanceGame extends Activity implements OnClickListener{
 		Integer posM=-1;
 		while(pos<10){
 			HashMap<String, String> rowData = new HashMap<String, String>();
-			TableRow tr = new TableRow(this);
 			pos++;
 			posM++;
 			String position = pos.toString() +") ";
