@@ -38,6 +38,7 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 	private long points=100;
 	public static final String CGHS = "CGHS";
 	private String userN="Name input error";
+	private String gLvl="";
 	
 
 	
@@ -62,6 +63,7 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 		if(extras !=null) {
 			String value = extras.getString("numQuestions");
 			String gradeLevel = extras.getString("gradeLevel");
+			gLvl=gradeLevel;
 			userN = extras.getString("userName");
 			curGame = new ConversionGame(gradeLevel);
 			numQ = Integer.parseInt(value);
@@ -133,7 +135,20 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 					//Publish Highscore
 					//Creates Highscore Object
 					HighscoreObject hScore = new HighscoreObject(this, "CGHS");
-					points = (long) (points-avgPercentError)*numQ;
+					long timeply=0;
+					long currnt = (System.currentTimeMillis() / 1000) - startTime;
+					if(currnt<10){
+						timeply=3;
+					}else if (currnt<20){
+						timeply=(long) 2;
+					}else if (currnt<30){
+						timeply=1;
+					}
+					long lvl=2;
+					if(gLvl=="MiddleSchool"){
+						lvl=1;
+					}
+					points = (long) (points-avgPercentError)*numQ*timeply*lvl;
 					bun.putLong("score", points);
 					i.putExtras(bun);
 					boolean worked = hScore.addScore(userN, points);

@@ -58,7 +58,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Enter Name"
+        android:hint="Enter Your Initials"
+        android:maxLength="3"
         android:layout_marginTop="20dp" >
 
         <requestFocus />
