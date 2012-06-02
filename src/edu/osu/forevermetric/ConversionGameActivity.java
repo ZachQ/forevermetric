@@ -114,7 +114,7 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 						+ Double.toString(roundTwoDecimals(percentError))
 						+ "% of the correct answer\n" + "* Your guess was "
 						+ prettyPrint(userGuess) + Aunits + "\n * Correct answer was "
-						+ correctPP + Qunits
+						+ correctPP + Aunits
 						+ "\n * Your current time: " + curr + "s");
 	
 				guessList.add(prettyPrint(userGuess) + " " + Aunits);
