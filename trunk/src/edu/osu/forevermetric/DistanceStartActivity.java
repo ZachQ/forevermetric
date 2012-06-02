@@ -2,7 +2,9 @@ package edu.osu.forevermetric;
 
 import edu.osu.forevermetric.ConversionStartActivity.MyOnItemSelectedListener;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
@@ -65,6 +67,66 @@ public class DistanceStartActivity extends Activity implements OnClickListener {
 		spinner2.setOnItemSelectedListener(new MyOnItemSelectedListener());
 	}
 
+	@Override
+	public void onResume() {
+		final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+		super.onResume();
+		if(!Network.isNetworkAvailable(this) && !manager.isProviderEnabled( LocationManager.GPS_PROVIDER )) {
+			 // prepare the alert box
+           AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+
+           // set the message to display
+           alertbox.setMessage("No network connectivity or GPS was detected.  You may experience issues with the map while playing the distance game.");
+
+           // add a neutral button to the alert box and assign a click listener
+           alertbox.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+
+               // click listener on the alert box
+               public void onClick(DialogInterface arg0, int arg1) {
+                   // window closes
+               }
+           });
+
+           // show it
+           alertbox.show();
+		} else if(!Network.isNetworkAvailable(this)) {
+			 // prepare the alert box
+	           AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+
+	           // set the message to display
+	           alertbox.setMessage("No network connectivity was detected.  You may experience issues while playing the distance game.");
+
+	           // add a neutral button to the alert box and assign a click listener
+	           alertbox.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+
+	               // click listener on the alert box
+	               public void onClick(DialogInterface arg0, int arg1) {
+	                   // window closes
+	               }
+	           });
+
+	           // show it
+	           alertbox.show();
+			} else if(!manager.isProviderEnabled( LocationManager.GPS_PROVIDER )) {
+				 // prepare the alert box
+		           AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+
+		           // set the message to display
+		           alertbox.setMessage("No GPS was detected.  You may experience issues with your location while playing the distance game.");
+
+		           // add a neutral button to the alert box and assign a click listener
+		           alertbox.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+
+		               // click listener on the alert box
+		               public void onClick(DialogInterface arg0, int arg1) {
+		                   // window closes
+		               }
+		           });
+
+		           // show it
+		           alertbox.show();
+				}
+	}
 	public class MyOnItemSelectedListener implements OnItemSelectedListener {
 
 		public void onItemSelected(AdapterView<?> parent, View view, int pos,
