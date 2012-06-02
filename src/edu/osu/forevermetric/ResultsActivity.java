@@ -1,6 +1,8 @@
 package edu.osu.forevermetric;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,10 +13,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class ResultsActivity extends Activity implements OnClickListener{
 	private final String TAG = "ResultsActivity";
+	private ArrayList<HashMap<String, String>> resultsList = new ArrayList<HashMap<String, String>>();
+	private SimpleAdapter resultsAdapter;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) { 
@@ -29,21 +35,25 @@ public class ResultsActivity extends Activity implements OnClickListener{
 		if(extras !=null) {
 			double percentError = extras.getDouble("percentError");
 			int numQuestions = extras.getInt("numQuestions");
-			String[] results = extras.getStringArray("results");
+			ArrayList<String> answers = extras.getStringArrayList("answer");
+			ArrayList<String> guess = extras.getStringArrayList("guess");
 			long points = extras.getLong("score");
-			TextView textview = new TextView(this);
-			textview = (TextView) findViewById(R.id.resultsTextView);
 			TextView topTextview = new TextView(this);
 			topTextview = (TextView) findViewById(R.id.resultsTopTextView);
 			//set results 
 			int i = 0;
-			while(i < results.length) {
-				textview.append(Html.fromHtml(results[i]));
-				textview.append("\n");
+			ListView resultsListView = (ListView) findViewById(R.id.resultsListView);
+			resultsAdapter = new SimpleAdapter(this, resultsList, R.layout.resultsrow, new String[] { "num", "guess", "answer"}, new int[] { R.id.col1, R.id.col2, R.id.col3});
+			resultsListView.setAdapter(resultsAdapter);
+			while(i < guess.size()) {
+				HashMap<String, String> rowData = new HashMap<String, String>();
+				rowData.put("num", Integer.toString(i+1));
+				rowData.put("guess", guess.get(i));
+				rowData.put("answer", answers.get(i));
+				resultsList.add(rowData);
 				i++;
 			}
-			topTextview.setText("Your total percent Error was %" + roundTwoDecimals(percentError) + " earning you a score of " + points + " points!");
-			textview.setMovementMethod(new ScrollingMovementMethod());
+			topTextview.setText("You have earned a score of " + points + " points!");
 			//return button
 			View returnButton = (Button) findViewById(R.id.bMenuReturn);
 			returnButton.setOnClickListener(this);

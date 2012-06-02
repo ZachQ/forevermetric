@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
@@ -9,44 +9,73 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0.1"
         android:gravity="center"
         android:paddingTop="0dp"
-        android:textSize="30dp" 
         android:text="@string/results"
         android:textColor="#000000"
-    	android:layout_weight="0.1"/>
-    
+        android:textSize="30dp" />
 
     <TextView 
         android:id="@+id/resultsTopTextView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingTop="20dp"
         android:textSize="20dp" 
         android:textColor="#000000"
-    	android:layout_weight="0.1"/>
-    <TextView
-        android:id="@+id/resultsTextView"
-        android:layout_width="match_parent"
+    	android:layout_weight="0.2"/>
+   <TableRow>
+     <TextView
+        android:id="@+id/col1"
+        android:layout_width="0dp"
+        android:background="@drawable/back"
         android:layout_height="wrap_content"
-        android:layout_weight="0.85"
-        android:gravity="left"
-        android:paddingTop="20dp"
-        android:textColor="#000000"
-        android:textSize="18dp" />
+        android:text="Num"
+        android:textStyle="bold" 
+        android:textColor="#FFFFFF"
+        android:textSize="6pt"
+        android:layout_weight = ".2"/>
+
+      <TextView
+          android:id="@+id/col2"
+          android:layout_gravity="left"
+          android:background="@drawable/back"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:text="Guess"
+          android:textColor="#FFFFFF"
+          android:textSize="6pt"
+          android:textStyle="bold"
+          android:layout_weight = ".4" />
+
+
+
+      <TextView
+          android:id="@+id/col3"
+          android:layout_gravity="left"
+          android:background="@drawable/back"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight=".4"
+          android:text="Answer"
+          android:textColor="#FFFFFF"
+        android:textSize="6pt"
+          android:textStyle="bold" />
+</TableRow>
+
+    <ListView
+        android:id="@+id/resultsListView"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/highscoresTxt"
+        android:layout_weight="0.70"
+        android:cacheColorHint="#00000000" />
 
     <Button
         android:id="@+id/bMenuReturn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:layout_weight="0.05"
-        android:padding="10dp"
-        android:text="Return to Menu"
         android:background="@drawable/button"
-        android:textSize="20dp" />
+        android:text="Return to Menu" />
 
-</LinearLayout>
+</TableLayout>
