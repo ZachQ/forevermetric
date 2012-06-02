@@ -43,14 +43,6 @@
             android:text="Submit" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/bHint"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hint"
-        android:background="@drawable/button"
-        android:layout_gravity="right" />
 
     <TextView
         android:id="@+id/answerField"

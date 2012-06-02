@@ -33,6 +33,7 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 	
 	// Timer
 	private long startTime = System.currentTimeMillis() / 1000;
+	private long beginTime = System.currentTimeMillis()/1000;
 	
 	//Point system
 	private long points=100;
@@ -137,11 +138,11 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 					HighscoreObject hScore = new HighscoreObject(this, "CGHS");
 					long timeply=0;
 					long currnt = (System.currentTimeMillis() / 1000) - startTime;
-					if(currnt<10){
+					if(currnt<10*numQ){
 						timeply=3;
-					}else if (currnt<20){
+					}else if (currnt<20*numQ){
 						timeply=(long) 2;
-					}else if (currnt<30){
+					}else if (currnt<30*numQ){
 						timeply=1;
 					}
 					long lvl=2;
@@ -149,9 +150,13 @@ public class ConversionGameActivity extends Activity implements OnClickListener 
 						lvl=1;
 					}
 					points = (long) (points-avgPercentError)*numQ*timeply*lvl;
+					if(points<0){
+						points=-1;
+					}
 					bun.putLong("score", points);
-					i.putExtras(bun);
 					boolean worked = hScore.addScore(userN, points);
+					bun.putBoolean("madeHS", worked);
+					i.putExtras(bun);
 					startActivity(i);
 					
 					
