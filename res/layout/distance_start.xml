@@ -47,7 +47,8 @@
         android:layout_below="@+id/spinnerNumQuestions"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Enter Name"
+        android:hint="Enter Your Initials"
+        android:maxLength="3"
         android:inputType="textPersonName" >
 
         <requestFocus />
