@@ -73,7 +73,7 @@ public class ConversionGame {
 					Measurement.MILLIMETER, MSquestionVals.get(0), Measurement.FOOT); objectsList.add(tempObject);
 					
 			tempObject = new ConversionGameObject("The diameter of the Earth is 7,926.41 miles. How many kilometers is that?",
-					Measurement.MILE, "12756.32", Measurement.KILOMETER);	objectsList.add(tempObject);
+					Measurement.MILE, "7926.41", Measurement.KILOMETER);	objectsList.add(tempObject);
 					
 			tempObject = new ConversionGameObject("Convert " +MSquestionVals.get(1)+ " inches into feet",
 					Measurement.INCH, MSquestionVals.get(1), Measurement.FOOT); objectsList.add(tempObject);
@@ -91,10 +91,7 @@ public class ConversionGame {
 					Measurement.MILLIMETER, MSquestionVals.get(4), Measurement.KILOMETER); objectsList.add(tempObject);
 			
 			tempObject = new ConversionGameObject("Convert " +MSquestionVals.get(5)+ " millimeters into meters",
-					Measurement.MILLIMETER, MSquestionVals.get(5), Measurement.METER); objectsList.add(tempObject);
-					
-			tempObject = new ConversionGameObject("Convert " +MSquestionVals.get(6)+ " meters into millimeters",
-					Measurement.METER, MSquestionVals.get(6), Measurement.MILLIMETER); objectsList.add(tempObject);				
+					Measurement.MILLIMETER, MSquestionVals.get(5), Measurement.METER); objectsList.add(tempObject);		
 			
 			tempObject = new ConversionGameObject("How many meters are in " +MSquestionVals.get(5)+ " kilometers?",
 					Measurement.KILOMETER, MSquestionVals.get(5), Measurement.METER); objectsList.add(tempObject);
@@ -132,23 +129,19 @@ public class ConversionGame {
 					Measurement.MILLIMETER, "1.55", Measurement.INCH);	objectsList.add(tempObject);
 		
 			tempObject = new ConversionGameObject("A penny has a diameter of  0.750 inches. How many millimters is that?",
-					Measurement.INCH, "19.05", Measurement.MILLIMETER);	objectsList.add(tempObject);
-			
-			tempObject = new ConversionGameObject("Convert " +HSquestionVals.get(0)+ " miles into feet",
-					Measurement.MILE, HSquestionVals.get(0), Measurement.FOOT);	objectsList.add(tempObject);
+					Measurement.INCH, "0.750", Measurement.MILLIMETER);	objectsList.add(tempObject);
+					
+			tempObject = new ConversionGameObject("Convert " +HSquestionVals.get(0)+ " inches into millimeter",
+					Measurement.INCH, HSquestionVals.get(0), Measurement.MILLIMETER); objectsList.add(tempObject);
 
 			tempObject = new ConversionGameObject("Convert " +HSquestionVals.get(1)+ " millimeters into inches",
-					Measurement.MILLIMETER, HSquestionVals.get(1), Measurement.INCH); objectsList.add(tempObject);
-					
-			tempObject = new ConversionGameObject("Convert " +HSquestionVals.get(2)+ " inches into millimeter",
-					Measurement.INCH, HSquestionVals.get(2), Measurement.MILLIMETER); objectsList.add(tempObject);
-			
+					Measurement.MILLIMETER, HSquestionVals.get(1), Measurement.INCH); objectsList.add(tempObject);		
 			
 			tempObject = new ConversionGameObject("Convert " +HSquestionVals.get(2)+ " meters into miles",
 					Measurement.METER, HSquestionVals.get(2), Measurement.MILE); objectsList.add(tempObject);
 			
-			tempObject = new ConversionGameObject("Convert " +HSquestionVals.get(3)+ " meters into miles",
-					Measurement.METER,HSquestionVals.get(3), Measurement.MILE); objectsList.add(tempObject);
+			tempObject = new ConversionGameObject("Convert " +HSquestionVals.get(3)+ " millimeters into feet",
+					Measurement.MILLIMETER,HSquestionVals.get(3), Measurement.FOOT); objectsList.add(tempObject);
 			
 			tempObject = new ConversionGameObject("How many meters are in " +HSquestionVals.get(4)+ " miles?",
 					Measurement.MILE, HSquestionVals.get(4), Measurement.METER); objectsList.add(tempObject);
